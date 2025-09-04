@@ -90,7 +90,7 @@ export default function MissionPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               
               {/* Image Section */}
-              <div className="flex justify-center">
+              <div className="flex justify-center hidden lg:block">
                 <div className="relative">
                   <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-cyan-primary/30 transition-all duration-500">
                     {/* Placeholder for your image */}

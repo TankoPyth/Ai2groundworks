@@ -35,7 +35,7 @@ export default function Hero() {
               </div>
               
               {/* Hero Image */}
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 hidden lg:block">
                 <div className="relative">
                   <img 
                     src="/src/assets/images/Ai2site_nobg.png"

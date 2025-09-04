@@ -81,7 +81,7 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Visual Side */}
-                <div className="flex-1 flex justify-center">
+                <div className="flex-1 flex justify-center hidden lg:flex">
                   <div className="relative">
                     <div className="w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-cyan-primary/30 transition-all duration-500">
                       <div className="w-full h-full bg-gradient-to-br from-cyan-primary/20 to-cyan-tertiary/20 rounded-2xl flex items-center justify-center">

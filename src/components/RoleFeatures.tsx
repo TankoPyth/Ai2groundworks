@@ -93,7 +93,7 @@ export default function RoleFeatures() {
                 </div>
 
                 {/* Visual Side */}
-                <div className="flex-1 flex justify-center">
+                <div className="flex-1 flex justify-center hidden lg:flex">
                   <div className="relative">
                     <div className="w-80 h-52 sm:w-96 sm:h-64 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-cyan-primary/30 transition-all duration-500">
                       <div className="w-full h-full bg-gradient-to-br from-cyan-primary/20 to-cyan-tertiary/20 rounded-2xl flex items-center justify-center relative overflow-hidden">

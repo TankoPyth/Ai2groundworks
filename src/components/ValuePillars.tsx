@@ -91,7 +91,7 @@ export default function ValuePillars() {
                 </div>
 
                 {/* Visual */}
-                <div className="flex-1 flex justify-center">
+                <div className="flex-1 flex justify-center hidden lg:flex">
                   <div className="relative">
                     <div className="w-64 h-40 sm:w-72 sm:h-48 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-primary/30 transition-all duration-500 overflow-hidden">
                       <div className="w-full h-full flex items-center justify-center">
