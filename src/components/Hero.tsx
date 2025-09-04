@@ -26,7 +26,7 @@ export default function Hero() {
             <div className="flex flex-col lg:flex-row items-center gap-8 mb-6">
               {/* Main headline with professional typography */}
               <div className="flex-1">
-                <h1 className="text-white mb-6 leading-[1.1] tracking-tight max-w-4xl relative z-50 text-6xl lg:text-7xl font-bold">
+                <h1 className="text-white mb-6 leading-[1.1] tracking-tight max-w-4xl relative z-50 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold">
                   AI <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">oversight</span> for<br />
                   <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">
                     civil <span className="underline decoration-cyan-tertiary decoration-4 underline-offset-8">construction</span>
@@ -40,7 +40,7 @@ export default function Hero() {
                   <img 
                     src="/src/assets/images/Ai2site_nobg.png"
                     alt="Ai²Groundworks"
-                    className="w-64 h-64 lg:w-80 lg:h-80 object-contain hover:scale-105 transition-transform duration-500"
+                    className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-contain hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       console.log('Hero image failed to load');
                       const target = e.currentTarget;
@@ -56,17 +56,17 @@ export default function Hero() {
             </div>
             
             {/* Professional subtext */}
-            <p className="text-silver-secondary mb-8 font-light text-xl leading-relaxed max-w-3xl relative z-50">
+            <p className="text-silver-secondary mb-8 font-light text-lg sm:text-xl leading-relaxed max-w-3xl relative z-50">
               Transform project documents into actionable insights that drive safer, more efficient construction outcomes across Australia.
             </p>
 
             {/* Enhanced CTA section */}
             <div className="flex flex-col items-start gap-6 mb-12 relative z-50">
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
               <InteractiveHoverButton 
                 text="Apply for pilot program" 
                 variant="primary"
-                className="px-8 py-4"
+                className="px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
                 onClick={() => setIsModalOpen(true)}
               />
                 
@@ -74,7 +74,7 @@ export default function Hero() {
                   href="https://www.linkedin.com/company/ai-%C2%B2-groundworks/" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-primary/40 backdrop-blur-sm rounded-lg px-6 py-4 transition-all duration-300"
+                  className="group flex items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-primary/40 backdrop-blur-sm rounded-lg px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 w-full sm:w-auto justify-center sm:justify-start"
                   title="Follow us on LinkedIn"
                 >
                   <Linkedin className="w-5 h-5 text-silver-secondary group-hover:text-cyan-primary transition-colors" />
@@ -89,7 +89,7 @@ export default function Hero() {
             </div>
 
             {/* Professional trust indicators */}
-            <div className="border-t border-white/8 pt-8 relative z-50 -mx-6 px-6">
+            <div className="border-t border-white/8 pt-8 relative z-50">
               <p className="text-silver-tertiary text-sm mb-6 font-medium tracking-wide uppercase">
                 Trusted by construction leaders
               </p>

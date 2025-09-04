@@ -46,10 +46,10 @@ export default function MissionPage() {
           
           {/* Header Section */}
           <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-white mb-6 leading-tight max-w-3xl mx-auto text-4xl lg:text-5xl font-bold">
+            <h1 className="text-white mb-6 leading-tight max-w-3xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-bold">
               Our <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">Mission</span>
             </h1>
-            <p className="text-silver-secondary text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-silver-secondary text-base sm:text-lg font-light max-w-2xl mx-auto leading-relaxed">
               Building the future of construction through AI-powered oversight
             </p>
           </div>
@@ -60,11 +60,11 @@ export default function MissionPage() {
             {/* Mission Statement Card */}
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 mb-8 hover:bg-white/8 hover:border-cyan-primary/20 transition-all duration-500">
               <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-8">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-8">
                   AI² GroundWorks <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">Mission</span> Statement
                 </h2>
                 
-                <div className="space-y-6 text-lg leading-relaxed">
+                <div className="space-y-6 text-base sm:text-lg leading-relaxed">
                   <p className="text-silver-secondary">
                     At AI² GroundWorks, our mission is to bring <span className="text-white font-semibold">clarity, care, and capability</span> to civil construction through AI oversight.
                   </p>
@@ -78,7 +78,7 @@ export default function MissionPage() {
                   </p>
                   
                   <div className="bg-gradient-to-r from-cyan-primary/10 to-cyan-tertiary/10 border border-cyan-primary/20 rounded-2xl p-6 mt-8">
-                    <p className="text-white font-semibold text-xl">
+                    <p className="text-white font-semibold text-lg sm:text-xl">
                       Our goal is simple: raise the standard and help everyone grow along the way.
                     </p>
                   </div>
@@ -92,7 +92,7 @@ export default function MissionPage() {
               {/* Image Section */}
               <div className="flex justify-center">
                 <div className="relative">
-                  <div className="w-80 h-80 lg:w-96 lg:h-96 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-cyan-primary/30 transition-all duration-500">
+                  <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-cyan-primary/30 transition-all duration-500">
                     {/* Placeholder for your image */}
                     <div className="w-full h-full bg-gradient-to-br from-cyan-primary/10 to-cyan-tertiary/10 flex items-center justify-center relative">
                       {/* Replace this div with your image */}
@@ -122,15 +122,15 @@ export default function MissionPage() {
               {/* CTA Section */}
               <div className="flex flex-col justify-center space-y-6">
                 <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center">
-                  <h3 className="text-2xl font-bold text-white mb-4">Ready to get started?</h3>
-                  <p className="text-silver-secondary mb-6 font-light">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Ready to get started?</h3>
+                  <p className="text-silver-secondary mb-6 font-light text-sm sm:text-base">
                     Join our pilot program and be part of the construction revolution
                   </p>
                   
                   <InteractiveHoverButton 
                     text="Apply for pilot program" 
                     variant="primary"
-                    className="px-8 py-4 text-lg"
+                    className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
                     onClick={() => setIsModalOpen(true)}
                   />
                   
@@ -143,7 +143,7 @@ export default function MissionPage() {
                 {/* Contact info */}
                 <div className="text-center space-y-3">
                   <p className="text-silver-tertiary text-sm">Questions about our mission?</p>
-                  <div className="flex items-center justify-center space-x-6">
+                  <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6">
                     <a href="mailto:info@ai2groundworks.com.au" className="text-cyan-primary hover:text-white transition-colors text-sm">
                       info@ai2groundworks.com.au
                     </a>

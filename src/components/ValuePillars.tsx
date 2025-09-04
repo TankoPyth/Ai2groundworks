@@ -60,10 +60,10 @@ export default function ValuePillars() {
       <div className="max-w-6xl mx-auto px-6">
         <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="max-w-3xl">
-            <h2 className="text-white mb-6 leading-tight text-4xl lg:text-5xl font-bold">
+            <h2 className="text-white mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
               Why construction <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">leaders</span> choose us
             </h2>
-            <p className="text-silver-secondary font-light text-xl">
+            <p className="text-silver-secondary font-light text-base sm:text-lg lg:text-xl">
               Purpose-built for the unique challenges of Australian civil construction projects.
             </p>
           </div>
@@ -73,7 +73,7 @@ export default function ValuePillars() {
           {pillars.map((pillar, index) => (
             <div key={index} 
                  className={`transition-all duration-1000 delay-${index * 150} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              <div className={`flex flex-col lg:flex-row items-center gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                 
                 {/* Content */}
                 <div className="flex-1 space-y-4">
@@ -86,14 +86,14 @@ export default function ValuePillars() {
                     </div>
                   </div>
                   
-                  <h3 className="text-3xl font-bold text-white">{pillar.title}</h3>
-                  <p className="text-silver-secondary text-lg leading-relaxed mb-4">{pillar.desc}</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">{pillar.title}</h3>
+                  <p className="text-silver-secondary text-base sm:text-lg leading-relaxed mb-4">{pillar.desc}</p>
                 </div>
 
                 {/* Visual */}
                 <div className="flex-1 flex justify-center">
                   <div className="relative">
-                    <div className="w-72 h-48 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-primary/30 transition-all duration-500 overflow-hidden">
+                    <div className="w-64 h-40 sm:w-72 sm:h-48 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-cyan-primary/30 transition-all duration-500 overflow-hidden">
                       <div className="w-full h-full flex items-center justify-center">
                         {pillar.imageUrl ? (
                           <img 
@@ -103,7 +103,7 @@ export default function ValuePillars() {
                           />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-cyan-primary/10 to-cyan-tertiary/10 rounded-xl flex items-center justify-center">
-                            <pillar.icon className="w-16 h-16 text-cyan-primary/50" />
+                            <pillar.icon className="w-12 h-12 sm:w-16 sm:h-16 text-cyan-primary/50" />
                           </div>
                         )}
                       </div>

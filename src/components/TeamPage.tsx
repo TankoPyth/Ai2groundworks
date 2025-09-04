@@ -71,10 +71,10 @@ export default function TeamPage() {
           
           {/* Header Section */}
           <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-white mb-4 leading-tight text-4xl lg:text-5xl font-bold">
+            <h1 className="text-white mb-4 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
               Meet the <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">founding</span> team
             </h1>
-            <p className="text-silver-secondary text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-silver-secondary text-base sm:text-lg font-light max-w-2xl mx-auto leading-relaxed">
               Experienced leaders bringing AI innovation to Australian construction
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function TeamPage() {
                   
                   {/* Photo */}
                   <div className="relative mb-6">
-                    <div className="w-32 h-32 mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-primary/20 to-cyan-tertiary/20">
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-primary/20 to-cyan-tertiary/20">
                       <img 
                         src={member.photoUrl}
                         alt={member.name}
@@ -102,12 +102,12 @@ export default function TeamPage() {
                       />
                     </div>
                     {/* Decorative ring */}
-                    <div className="absolute inset-0 w-32 h-32 mx-auto rounded-2xl border-2 border-cyan-primary/20"></div>
+                    <div className="absolute inset-0 w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-2xl border-2 border-cyan-primary/20"></div>
                   </div>
 
                   {/* Info */}
                   <div className="text-center space-y-3">
-                    <h3 className="text-xl font-bold text-white">{member.name}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-white">{member.name}</h3>
                     <p className="text-cyan-primary font-semibold text-sm">{member.title}</p>
                     <p className="text-silver-secondary text-sm leading-relaxed">{member.bio}</p>
                     

@@ -55,10 +55,10 @@ export default function PilotProgram() {
               <span className="text-cyan-primary font-semibold text-lg">Limited pilot program</span>
             </div>
 
-            <h2 className="text-white mb-8 leading-tight">
+            <h2 className="text-white mb-8 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
               Be among the first in Australia
             </h2>
-            <p className="text-silver-secondary text-xl font-light max-w-3xl mx-auto leading-relaxed">
+            <p className="text-silver-secondary text-base sm:text-lg lg:text-xl font-light max-w-3xl mx-auto leading-relaxed">
               Join our exclusive pilot program and help shape the future of AI-powered construction oversight.
             </p>
           </div>
@@ -79,8 +79,8 @@ export default function PilotProgram() {
           {/* CTA section */}
           <div className={`text-center mt-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-12 mb-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Ready to transform your projects?</h3>
-              <p className="text-silver-secondary mb-6 font-light">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Ready to transform your projects?</h3>
+              <p className="text-silver-secondary mb-6 font-light text-sm sm:text-base">
                 Applications are reviewed on a rolling basis. Apply today to secure your spot.
               </p>
               
@@ -88,7 +88,7 @@ export default function PilotProgram() {
                 <InteractiveHoverButton 
                   text="Apply for pilot program" 
                   variant="primary"
-                  className="px-10 py-4 text-lg"
+                  className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
                   onClick={() => setIsModalOpen(true)}
                 />
                 <div className="flex items-center space-x-2 text-silver-tertiary">

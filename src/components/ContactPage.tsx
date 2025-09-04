@@ -53,10 +53,10 @@ export default function ContactPage() {
           
           {/* Header section */}
           <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-white mb-6 leading-tight text-4xl lg:text-5xl font-bold">
+            <h1 className="text-white mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
               Be among the <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">first</span> in Australia
             </h1>
-            <p className="text-silver-secondary text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-silver-secondary text-base sm:text-lg font-light max-w-2xl mx-auto leading-relaxed">
               Join our exclusive pilot program and help shape the future of AI-powered construction oversight.
             </p>
           </div>
@@ -77,8 +77,8 @@ export default function ContactPage() {
           {/* CTA section */}
           <div className={`text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-              <h2 className="text-xl font-bold text-white mb-3">Ready to transform your projects?</h2>
-              <p className="text-silver-secondary mb-4 font-light text-sm">
+              <h2 className="text-lg sm:text-xl font-bold text-white mb-3">Ready to transform your projects?</h2>
+              <p className="text-silver-secondary mb-4 font-light text-sm sm:text-base">
                 Applications are reviewed on a rolling basis. Apply today to secure your spot.
               </p>
               
@@ -86,7 +86,7 @@ export default function ContactPage() {
                 <InteractiveHoverButton 
                   text="Apply for pilot program" 
                   variant="primary"
-                  className="px-6 py-3"
+                  className="px-6 py-3 w-full sm:w-auto"
                   onClick={() => setIsModalOpen(true)}
                 />
                 <div className="flex items-center space-x-2 text-silver-tertiary">
@@ -99,7 +99,7 @@ export default function ContactPage() {
             {/* Contact Information - moved inline */}
             <div className="mt-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
               <h3 className="text-xl font-bold text-white mb-6 text-center">Get in touch</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-center">
                 <div>
                   <h4 className="text-white font-semibold mb-2">Email</h4>
                   <p className="text-silver-secondary text-sm">info@ai2groundworks.com</p>
