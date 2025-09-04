@@ -58,36 +58,36 @@ export default function ValuePillars() {
   return (
     <section id="value-pillars" className="py-12 relative bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
-        <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="max-w-3xl">
             <h2 className="text-white mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
               Why construction <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">leaders</span> choose us
             </h2>
-            <p className="text-silver-secondary font-light text-base sm:text-lg lg:text-xl">
+            <p className="text-silver-secondary font-light text-sm sm:text-base lg:text-lg xl:text-xl px-4 lg:px-0">
               Purpose-built for the unique challenges of Australian civil construction projects.
             </p>
           </div>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8 md:space-y-12">
           {pillars.map((pillar, index) => (
             <div key={index} 
                  className={`transition-all duration-1000 delay-${index * 150} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <div className={`flex flex-col lg:flex-row items-center gap-6 lg:gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                 
                 {/* Content */}
-                <div className="flex-1 space-y-4">
-                  <div className="flex items-center space-x-4">
+                <div className="flex-1 space-y-4 text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start space-x-4">
                     <div className="w-14 h-14 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-xl flex items-center justify-center">
                       <pillar.icon className="w-7 h-7 text-white" />
                     </div>
-                    <div className="text-cyan-primary font-semibold text-sm tracking-wide uppercase">
+                    <div className="text-cyan-primary font-semibold text-xs sm:text-sm tracking-wide uppercase">
                       {pillar.highlight}
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white">{pillar.title}</h3>
-                  <p className="text-silver-secondary text-base sm:text-lg leading-relaxed mb-4">{pillar.desc}</p>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">{pillar.title}</h3>
+                  <p className="text-silver-secondary text-sm sm:text-base lg:text-lg leading-relaxed mb-4 px-2 lg:px-0">{pillar.desc}</p>
                 </div>
 
                 {/* Visual */}

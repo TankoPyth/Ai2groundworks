@@ -35,12 +35,12 @@ export default function Hero() {
               </div>
               
               {/* Hero Image */}
-              <div className="flex-shrink-0 hidden lg:block">
+              <div className="flex-shrink-0">
                 <div className="relative">
                   <img 
                     src="/src/assets/images/Ai2site_nobg.png"
                     alt="Ai²Groundworks"
-                    className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-contain hover:scale-105 transition-transform duration-500"
+                    className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       console.log('Hero image failed to load');
                       const target = e.currentTarget;
@@ -49,8 +49,8 @@ export default function Hero() {
                   />
                   
                   {/* Decorative elements */}
-                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-cyan-primary/20 rounded-full blur-lg animate-pulse"></div>
-                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-tertiary/30 rounded-full blur-md animate-pulse" style={{animationDelay: '1.5s'}}></div>
+                  <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-4 h-4 sm:w-8 sm:h-8 bg-cyan-primary/20 rounded-full blur-lg animate-pulse"></div>
+                  <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-3 h-3 sm:w-6 sm:h-6 bg-cyan-tertiary/30 rounded-full blur-md animate-pulse" style={{animationDelay: '1.5s'}}></div>
                 </div>
               </div>
             </div>

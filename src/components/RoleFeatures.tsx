@@ -51,41 +51,41 @@ export default function RoleFeatures() {
   return (
     <section id="role-features" className="py-12 relative bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
-        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-white mb-8 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
             Built for <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">every</span> role
           </h2>
-          <p className="text-silver-secondary text-base sm:text-lg lg:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-silver-secondary text-sm sm:text-base lg:text-lg xl:text-xl font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0">
             Tailored insights and tools for project managers, safety officers, and executives
           </p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8 md:space-y-12">
           {roles.map((item, index) => (
             <div key={index} 
                  className={`transition-all duration-1000 delay-${index * 200} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
+              <div className={`flex flex-col lg:flex-row items-center gap-6 lg:gap-12 ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
                 
                 {/* Content Side */}
-                <div className="flex-1 space-y-4">
-                  <div className="flex items-center space-x-4">
+                <div className="flex-1 space-y-4 text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start space-x-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-2xl flex items-center justify-center">
                       <item.icon className="w-8 h-8 text-white" />
                     </div>
-                    <div className="text-sm font-medium text-cyan-primary">
+                    <div className="text-xs sm:text-sm font-medium text-cyan-primary">
                       {item.roleText}
                     </div>
                   </div>
                   
                   <div>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">{item.title}</h3>
-                    <p className="text-silver-secondary text-base sm:text-lg leading-relaxed mb-4">{item.desc}</p>
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 leading-tight">{item.title}</h3>
+                    <p className="text-silver-secondary text-sm sm:text-base lg:text-lg leading-relaxed mb-4 px-2 lg:px-0">{item.desc}</p>
                     
-                    <div className="grid grid-cols-1 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 md:gap-3">
                       {item.features.map((feature, fIndex) => (
-                        <div key={fIndex} className="flex items-center space-x-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                        <div key={fIndex} className="flex items-center justify-center lg:justify-start space-x-3 bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
                           <CheckCircle className="w-5 h-5 text-cyan-primary flex-shrink-0" />
-                          <span className="text-silver-secondary font-medium text-sm sm:text-base">{feature}</span>
+                          <span className="text-silver-secondary font-medium text-xs sm:text-sm lg:text-base">{feature}</span>
                         </div>
                       ))}
                     </div>

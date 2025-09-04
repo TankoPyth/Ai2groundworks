@@ -38,18 +38,18 @@ export default function Header() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-primary/80 backdrop-blur-xl border-b border-white/8">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-2">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-3">
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300"
+              className="md:hidden w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0"
             >
               <Menu className="w-5 h-5 text-white" />
             </button>
             
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <Link to="/" className="flex items-center space-x-2 md:space-x-3 hover:opacity-80 transition-opacity flex-1 md:flex-initial justify-center md:justify-start">
               <div className="w-8 h-8 flex items-center justify-center">
                 <img 
                   src={logoSpin}
@@ -68,11 +68,11 @@ export default function Header() {
                   }}
                 />
               </div>
-              <span className="text-lg md:text-xl font-semibold text-white tracking-tight">Ai²Groundworks</span>
+              <span className="text-base md:text-lg lg:text-xl font-semibold text-white tracking-tight">Ai²Groundworks</span>
             </Link>
             
             {/* Navigation and Contact grouped together */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
               {/* Tubelight Navigation - Hidden on mobile */}
               <div className="hidden md:flex items-center gap-1 bg-background/5 border border-border backdrop-blur-lg py-0.5 px-0.5 rounded-full shadow-lg">
                 {navItems.map((item) => {
@@ -108,7 +108,7 @@ export default function Header() {
               <InteractiveHoverButton 
                 text="Contact sales" 
                 variant="primary"
-                className="px-3 md:px-5 py-1.5 text-xs md:text-sm"
+                className="px-2 md:px-3 lg:px-5 py-1.5 text-xs md:text-sm whitespace-nowrap"
                 onClick={() => {
                   // Dispatch custom event to open modal from any page
                   window.dispatchEvent(new CustomEvent('openPilotModal'));

@@ -70,26 +70,26 @@ export default function TeamPage() {
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Header Section */}
-          <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`text-center mb-6 md:mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h1 className="text-white mb-4 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
               Meet the <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">founding</span> team
             </h1>
-            <p className="text-silver-secondary text-base sm:text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0">
               Experienced leaders bringing AI innovation to Australian construction
             </p>
           </div>
 
           {/* Team Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {teamMembers.map((member, index) => (
               <div 
                 key={index}
                 className={`transition-all duration-1000 delay-${index * 200} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               >
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-cyan-primary/30 transition-all duration-300 h-full">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 hover:bg-white/10 hover:border-cyan-primary/30 transition-all duration-300 h-full">
                   
                   {/* Photo */}
-                  <div className="relative mb-6">
+                  <div className="relative mb-4 md:mb-6">
                     <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-primary/20 to-cyan-tertiary/20">
                       <img 
                         src={member.photoUrl}
@@ -106,28 +106,28 @@ export default function TeamPage() {
                   </div>
 
                   {/* Info */}
-                  <div className="text-center space-y-3">
-                    <h3 className="text-lg sm:text-xl font-bold text-white">{member.name}</h3>
-                    <p className="text-cyan-primary font-semibold text-sm">{member.title}</p>
-                    <p className="text-silver-secondary text-sm leading-relaxed">{member.bio}</p>
+                  <div className="text-center space-y-2 md:space-y-3">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white">{member.name}</h3>
+                    <p className="text-cyan-primary font-semibold text-xs sm:text-sm">{member.title}</p>
+                    <p className="text-silver-secondary text-xs sm:text-sm leading-relaxed">{member.bio}</p>
                     
                     {/* Contact Links */}
-                    <div className="flex items-center justify-center space-x-4 pt-4">
+                    <div className="flex items-center justify-center space-x-3 md:space-x-4 pt-3 md:pt-4">
                       <a 
                         href={`mailto:${member.email}`}
-                        className="w-10 h-10 bg-white/10 hover:bg-cyan-primary/20 border border-white/20 hover:border-cyan-primary/40 rounded-lg flex items-center justify-center transition-all duration-300 group"
+                        className="w-8 h-8 md:w-10 md:h-10 bg-white/10 hover:bg-cyan-primary/20 border border-white/20 hover:border-cyan-primary/40 rounded-lg flex items-center justify-center transition-all duration-300 group"
                         title={`Email ${member.name}`}
                       >
-                        <Mail className="w-4 h-4 text-silver-secondary group-hover:text-cyan-primary transition-colors" />
+                        <Mail className="w-3 h-3 md:w-4 md:h-4 text-silver-secondary group-hover:text-cyan-primary transition-colors" />
                       </a>
                       <a 
                         href={member.linkedinUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 bg-white/10 hover:bg-cyan-primary/20 border border-white/20 hover:border-cyan-primary/40 rounded-lg flex items-center justify-center transition-all duration-300 group"
+                        className="w-8 h-8 md:w-10 md:h-10 bg-white/10 hover:bg-cyan-primary/20 border border-white/20 hover:border-cyan-primary/40 rounded-lg flex items-center justify-center transition-all duration-300 group"
                         title={`${member.name} on LinkedIn`}
                       >
-                        <Linkedin className="w-4 h-4 text-silver-secondary group-hover:text-cyan-primary transition-colors" />
+                        <Linkedin className="w-3 h-3 md:w-4 md:h-4 text-silver-secondary group-hover:text-cyan-primary transition-colors" />
                       </a>
                     </div>
                   </div>
@@ -137,17 +137,17 @@ export default function TeamPage() {
           </div>
 
           {/* Call to Action */}
-          <div className={`text-center mt-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-              <p className="text-silver-secondary text-sm mb-4">
+          <div className={`text-center mt-6 md:mt-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6">
+              <p className="text-silver-secondary text-xs sm:text-sm mb-4">
                 Ready to work with our team?
               </p>
               <a 
                 href="/contact"
                 className="inline-flex items-center space-x-2 text-cyan-primary hover:text-white transition-colors font-medium"
               >
-                <span>Get in touch</span>
-                <Mail className="w-4 h-4" />
+                <span className="text-sm">Get in touch</span>
+                <Mail className="w-3 h-3 md:w-4 md:h-4" />
               </a>
             </div>
           </div>
