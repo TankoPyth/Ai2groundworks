@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from './Hero';
 import HowItWorks from './HowItWorks';
+import WhatItDoes from './WhatItDoes';
 import VisualBreak from './VisualBreak';
 import RoleFeatures from './RoleFeatures';
 import SectionDivider from './SectionDivider';
@@ -28,6 +29,7 @@ export default function HomePage() {
       >
         <div className="relative z-10">
           <Hero />
+          <WhatItDoes />
           <HowItWorks />
           <VisualBreak />
           <RoleFeatures />
