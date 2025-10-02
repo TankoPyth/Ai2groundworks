@@ -49,69 +49,46 @@ export default function RoleFeatures() {
   ];
 
   return (
-    <section id="role-features" className="py-12 relative bg-transparent">
+    <section id="role-features" className="py-8 relative bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
-        <div className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-white mb-8 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
+        <div className={`text-center mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="text-white mb-4 leading-tight text-2xl sm:text-3xl lg:text-4xl font-bold">
             Built for <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">every</span> role
           </h2>
-          <p className="text-silver-secondary text-sm sm:text-base lg:text-lg xl:text-xl font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0">
+          <p className="text-silver-secondary text-sm lg:text-base font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0">
             Tailored insights and tools for project managers, safety officers, and executives
           </p>
         </div>
 
-        <div className="space-y-8 md:space-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {roles.map((item, index) => (
             <div key={index} 
                  className={`transition-all duration-1000 delay-${index * 200} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              <div className={`flex flex-col lg:flex-row items-center gap-6 lg:gap-12 ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-cyan-primary/30 transition-all duration-300 h-full">
                 
-                {/* Content Side */}
-                <div className="flex-1 space-y-4 text-center lg:text-left">
-                  <div className="flex items-center justify-center lg:justify-start space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-2xl flex items-center justify-center">
-                      <item.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="text-xs sm:text-sm font-medium text-cyan-primary">
-                      {item.roleText}
-                    </div>
+                {/* Icon and Role Text */}
+                <div className="flex items-center justify-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-xl flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-white" />
                   </div>
-                  
-                  <div>
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 leading-tight">{item.title}</h3>
-                    <p className="text-silver-secondary text-sm sm:text-base lg:text-lg leading-relaxed mb-4 px-2 lg:px-0">{item.desc}</p>
+                  <div className="text-xs font-medium text-cyan-primary">
+                    {item.roleText}
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="text-center space-y-3">
+                  <h3 className="text-lg font-bold text-white leading-tight">{item.title}</h3>
+                  <p className="text-silver-secondary text-sm leading-relaxed">{item.desc}</p>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 md:gap-3">
+                  <div className="grid grid-cols-2 gap-2">
                       {item.features.map((feature, fIndex) => (
-                        <div key={fIndex} className="flex items-center justify-center lg:justify-start space-x-3 bg-white/5 rounded-lg p-3 md:p-4 border border-white/10">
-                          <CheckCircle className="w-5 h-5 text-cyan-primary flex-shrink-0" />
-                          <span className="text-silver-secondary font-medium text-xs sm:text-sm lg:text-base">{feature}</span>
+                        <div key={fIndex} className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10">
+                          <CheckCircle className="w-3 h-3 text-cyan-primary flex-shrink-0" />
+                          <span className="text-silver-secondary font-medium text-xs">{feature}</span>
                         </div>
                       ))}
                     </div>
-                  </div>
-                </div>
-
-                {/* Visual Side */}
-                <div className="flex-1 flex justify-center hidden lg:flex">
-                  <div className="relative">
-                    <div className="w-80 h-52 sm:w-96 sm:h-64 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-cyan-primary/30 transition-all duration-500">
-                      <div className="w-full h-full bg-gradient-to-br from-cyan-primary/20 to-cyan-tertiary/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                        <item.icon className="w-16 h-16 sm:w-20 sm:h-20 text-cyan-primary/60" />
-                        
-                        {/* Animated background pattern */}
-                        <div className="absolute inset-0 opacity-20">
-                          <div className="absolute top-4 right-4 w-3 h-3 bg-cyan-primary rounded-full animate-ping"></div>
-                          <div className="absolute bottom-6 left-6 w-2 h-2 bg-cyan-tertiary rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-                          <div className="absolute top-1/2 left-4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Floating accent elements */}
-                    <div className="absolute -top-6 -right-6 w-12 h-12 bg-cyan-primary/20 rounded-full blur-xl animate-pulse"></div>
-                    <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-cyan-tertiary/30 rounded-full blur-lg animate-pulse" style={{animationDelay: '1.5s'}}></div>
-                  </div>
                 </div>
               </div>
             </div>
