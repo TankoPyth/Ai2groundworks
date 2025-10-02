@@ -115,14 +115,14 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
   return (
     <>
       <div className="fixed inset-0 z-[100]">
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-        <div className="absolute inset-0 flex items-center justify-center px-4 py-8 overflow-y-auto">
-          <div className="w-full max-w-2xl rounded-2xl bg-dark-primary/95 backdrop-blur-xl border border-white/20 p-4 md:p-6 shadow-2xl my-auto">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 flex items-center justify-center px-4">
+        <div className="w-full max-w-2xl rounded-2xl bg-dark-primary/95 backdrop-blur-xl border border-white/20 p-6 shadow-2xl">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg md:text-xl font-semibold text-white">
+            <h3 className="text-xl font-semibold text-white">
               {step === 1 ? "Pilot Program Signup — Company" : "Pilot Program Signup — Details"}
             </h3>
-            <button onClick={onClose} className="rounded-md p-2 text-silver-secondary hover:bg-white/10 hover:text-white transition-colors active:scale-95" aria-label="Close">
+            <button onClick={onClose} className="rounded-md p-2 text-silver-secondary hover:bg-white/10 hover:text-white transition-colors" aria-label="Close">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -217,7 +217,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
               </div>
 
               <div className="flex items-center justify-end">
-                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] active:scale-95 transition-all duration-300">
+                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300">
                   Next
                 </button>
               </div>
@@ -269,10 +269,10 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
               <input type="hidden" name="subject" value="" />
 
               <div className="flex items-center justify-between">
-                <button type="button" onClick={() => setStep(1)} className="rounded-lg border border-white/20 px-5 py-2.5 text-sm text-silver-secondary hover:bg-white/10 hover:text-white active:scale-95 transition-all duration-300">
+                <button type="button" onClick={() => setStep(1)} className="rounded-lg border border-white/20 px-5 py-2.5 text-sm text-silver-secondary hover:bg-white/10 hover:text-white transition-all duration-300">
                   Back
                 </button>
-                <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] active:scale-95 transition-all duration-300 disabled:opacity-60 disabled:transform-none">
+                <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 disabled:opacity-60 disabled:transform-none">
                   {submitting ? "Submitting…" : "Request Pilot Access"}
                 </button>
               </div>
@@ -280,7 +280,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
             </div>
           </form>
         </div>
-        </div>
+      </div>
       </div>
       
       {/* Success Notification */}

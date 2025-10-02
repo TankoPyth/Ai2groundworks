@@ -26,7 +26,6 @@ const InteractiveHoverButton = React.forwardRef<
       className={cn(
         baseStyles,
         variantStyles[variant],
-        "active:scale-95 touch-manipulation",
         className,
       )}
       onClick={onClick}
