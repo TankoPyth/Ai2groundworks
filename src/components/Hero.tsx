@@ -23,7 +23,7 @@ export default function Hero() {
     {
       icon: Users,
       title: "Role-based chat",
-      desc: "Dedicated spaces for PM, Safety, and Supervisor — each with their own instructions and memory."
+      desc: "Dedicated spaces for PM, Safety, and Supervisor each with their own instructions and memory."
     },
     {
       icon: ArrowRight,
