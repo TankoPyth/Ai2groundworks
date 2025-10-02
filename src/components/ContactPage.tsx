@@ -118,7 +118,7 @@ export default function ContactPage() {
       <PilotSignupModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
-        formspreeEndpoint="https://formspree.io/f/xdkogqpw"
+        formspreeEndpoint="https://formspree.io/f/mgvnykge"
       />
     </BackgroundGradientAnimation>
   );
