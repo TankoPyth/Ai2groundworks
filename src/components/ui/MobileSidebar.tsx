@@ -47,7 +47,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
 
       {/* Sidebar */}
       <div className={cn(
-        "fixed top-0 left-0 h-full w-80 bg-dark-primary/95 backdrop-blur-xl border-r border-white/10 z-50 transform transition-transform duration-300 ease-out md:hidden",
+        "fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-dark-primary/95 backdrop-blur-xl border-r border-white/10 z-50 transform transition-transform duration-300 ease-out md:hidden",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         
@@ -59,7 +59,8 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
           </div>
           <button
             onClick={onClose}
-            className="w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300"
+            className="w-10 h-10 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation"
+            aria-label="Close navigation menu"
           >
             <X className="w-5 h-5 text-white" />
           </button>
@@ -77,7 +78,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
                   key={item.name}
                   to={item.url}
                   className={cn(
-                    "flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300",
+                    "flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 touch-manipulation active:scale-95",
                     isActive 
                       ? "bg-cyan-primary/20 border border-cyan-primary/30 text-cyan-primary" 
                       : "text-silver-secondary hover:text-white hover:bg-white/10"
@@ -98,7 +99,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
               window.dispatchEvent(new CustomEvent('openPilotModal'));
               onClose();
             }}
-            className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg"
+            className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation"
           >
             Apply for pilot program
           </button>

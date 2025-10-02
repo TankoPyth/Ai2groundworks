@@ -35,22 +35,36 @@ export default function Header() {
     { name: 'Contact', url: '/contact', icon: MessageSquare }
   ];
 
+  // Close mobile menu when clicking outside or on escape
+  React.useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
+    }
+  }, [isMobileMenuOpen]);
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-primary/80 backdrop-blur-xl border-b border-white/8">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0"
+              className="md:hidden w-10 h-10 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 touch-manipulation"
+              aria-label="Open navigation menu"
             >
               <Menu className="w-5 h-5 text-white" />
             </button>
             
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 md:space-x-3 hover:opacity-80 transition-opacity flex-1 md:flex-initial justify-center md:justify-start">
-              <div className="w-8 h-8 flex items-center justify-center">
+            <Link to="/" className="flex items-center space-x-2 md:space-x-3 hover:opacity-80 active:opacity-70 transition-opacity flex-1 md:flex-initial justify-center md:justify-start touch-manipulation">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
                 <img 
                   src={logoSpin}
                   alt="Ai²Groundworks Logo" 
@@ -60,7 +74,7 @@ export default function Header() {
                     const target = e.currentTarget;
                     target.style.display = 'none';
                     const fallback = document.createElement('div');
-                    fallback.innerHTML = '<svg class="w-6 h-6 text-cyan-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>';
+                    fallback.innerHTML = '<div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-lg flex items-center justify-center"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>';
                     target.parentNode?.appendChild(fallback);
                   }}
                   onLoad={() => {
@@ -68,13 +82,13 @@ export default function Header() {
                   }}
                 />
               </div>
-              <span className="text-base md:text-lg lg:text-xl font-semibold text-white tracking-tight">Ai²Groundworks</span>
+              <span className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white tracking-tight">Ai²Groundworks</span>
             </Link>
             
             {/* Navigation and Contact grouped together */}
-            <div className="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
+            <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 flex-shrink-0">
               {/* Tubelight Navigation - Hidden on mobile */}
-              <div className="hidden md:flex items-center gap-1 bg-background/5 border border-border backdrop-blur-lg py-0.5 px-0.5 rounded-full shadow-lg">
+              <div className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 backdrop-blur-lg py-0.5 px-0.5 rounded-full shadow-lg">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = activeTab === item.name;
@@ -84,18 +98,18 @@ export default function Header() {
                       key={item.name}
                       to={item.url}
                       className={cn(
-                        "relative cursor-pointer text-sm font-semibold px-5 py-1.5 rounded-full transition-all duration-300 ease-out",
-                        "text-foreground/80 hover:text-primary hover:bg-muted/50",
-                        isActive && "bg-muted text-primary"
+                        "relative cursor-pointer text-sm font-semibold px-4 lg:px-5 py-1.5 rounded-full transition-all duration-300 ease-out",
+                        "text-white/80 hover:text-cyan-primary hover:bg-white/10",
+                        isActive && "bg-white/10 text-cyan-primary"
                       )}
                     >
                       <span>{item.name}</span>
                       {isActive && (
-                        <div className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10 animate-pulse">
-                          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-primary rounded-t-full">
-                            <div className="absolute w-12 h-6 bg-primary/20 rounded-full blur-md -top-2 -left-2 animate-pulse" />
-                            <div className="absolute w-8 h-6 bg-primary/20 rounded-full blur-md -top-1 animate-pulse" />
-                            <div className="absolute w-4 h-4 bg-primary/20 rounded-full blur-sm top-0 left-2 animate-pulse" />
+                        <div className="absolute inset-0 w-full bg-cyan-primary/5 rounded-full -z-10 animate-pulse">
+                          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-cyan-primary rounded-t-full">
+                            <div className="absolute w-12 h-6 bg-cyan-primary/20 rounded-full blur-md -top-2 -left-2 animate-pulse" />
+                            <div className="absolute w-8 h-6 bg-cyan-primary/20 rounded-full blur-md -top-1 animate-pulse" />
+                            <div className="absolute w-4 h-4 bg-cyan-primary/20 rounded-full blur-sm top-0 left-2 animate-pulse" />
                           </div>
                         </div>
                       )}
@@ -108,7 +122,7 @@ export default function Header() {
               <InteractiveHoverButton 
                 text="Contact sales" 
                 variant="primary"
-                className="px-2 md:px-3 lg:px-5 py-1.5 text-xs md:text-sm whitespace-nowrap"
+                className="px-2 sm:px-3 md:px-4 lg:px-5 py-1.5 text-xs sm:text-sm whitespace-nowrap"
                 onClick={() => {
                   // Dispatch custom event to open modal from any page
                   window.dispatchEvent(new CustomEvent('openPilotModal'));

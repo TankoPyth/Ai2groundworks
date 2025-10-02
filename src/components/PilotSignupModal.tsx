@@ -116,26 +116,26 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
     <>
       <div className="fixed inset-0 z-[100]">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute inset-0 flex items-center justify-center px-4">
-        <div className="w-full max-w-2xl rounded-2xl bg-dark-primary/95 backdrop-blur-xl border border-white/20 p-6 shadow-2xl">
+      <div className="absolute inset-0 flex items-center justify-center px-4 py-4 overflow-y-auto">
+        <div className="w-full max-w-2xl rounded-2xl bg-dark-primary/95 backdrop-blur-xl border border-white/20 p-4 sm:p-6 shadow-2xl my-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-white">
+            <h3 className="text-lg sm:text-xl font-semibold text-white">
               {step === 1 ? "Pilot Program Signup — Company" : "Pilot Program Signup — Details"}
             </h3>
-            <button onClick={onClose} className="rounded-md p-2 text-silver-secondary hover:bg-white/10 hover:text-white transition-colors" aria-label="Close">
+            <button onClick={onClose} className="rounded-md p-2 text-silver-secondary hover:bg-white/10 hover:text-white active:bg-white/20 transition-colors touch-manipulation" aria-label="Close">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+          <form onSubmit={handleSubmit} className="mt-4 sm:mt-6 space-y-4 sm:space-y-6">
             {/* honeypot */}
             <input type="text" name="company" className="hidden" tabIndex={-1} autoComplete="off" />
 
             {/* STEP 1 (kept mounted; just hidden when inactive) */}
             <div aria-hidden={step !== 1} className={step === 1 ? "" : "hidden"}>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <Field label="Company name" required>
                   <input name="companyName" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300" placeholder="Your company name" />
                 </Field>
@@ -191,8 +191,8 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2 text-white">Typical project categories (select all that apply)</label>
-                <div className="flex flex-wrap gap-2">
+                <label className="block text-sm font-medium mb-3 text-white">Typical project categories (select all that apply)</label>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {PROJECT_TYPES.map((pt) => {
                     const active = projectTypes.includes(pt);
                     return (
@@ -204,7 +204,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
                             prev.includes(pt) ? prev.filter((x) => x !== pt) : [...prev, pt]
                           )
                         }
-                        className={`px-3 py-1.5 rounded-full border text-sm ${
+                        className={`px-3 py-1.5 rounded-full border text-xs sm:text-sm touch-manipulation active:scale-95 transition-all duration-200 ${
                           active ? "bg-cyan-primary text-white border-cyan-primary" : "border-white/20 text-silver-secondary hover:bg-white/10 hover:text-white"
                         }`}
                       >
@@ -217,7 +217,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
               </div>
 
               <div className="flex items-center justify-end">
-                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300">
+                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] active:scale-95 transition-all duration-300 touch-manipulation">
                   Next
                 </button>
               </div>
@@ -225,7 +225,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
 
             {/* STEP 2 (kept mounted; just hidden when inactive) */}
             <div aria-hidden={step !== 2} className={step === 2 ? "" : "hidden"}>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <Field label="Active projects / month">
                   <select name="activeProjects" className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300">
                     <option value="" className="bg-dark-primary text-white">Select…</option>
@@ -254,7 +254,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
                 </Field>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                 <label className="flex items-center gap-2 text-sm text-silver-secondary">
                   <input type="checkbox" name="smsOk" defaultChecked />
                   I'm happy to receive SMS updates
@@ -269,10 +269,10 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
               <input type="hidden" name="subject" value="" />
 
               <div className="flex items-center justify-between">
-                <button type="button" onClick={() => setStep(1)} className="rounded-lg border border-white/20 px-5 py-2.5 text-sm text-silver-secondary hover:bg-white/10 hover:text-white transition-all duration-300">
+                <button type="button" onClick={() => setStep(1)} className="rounded-lg border border-white/20 px-5 py-2.5 text-sm text-silver-secondary hover:bg-white/10 hover:text-white active:bg-white/20 transition-all duration-300 touch-manipulation">
                   Back
                 </button>
-                <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 disabled:opacity-60 disabled:transform-none">
+                <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] active:scale-95 transition-all duration-300 disabled:opacity-60 disabled:transform-none touch-manipulation">
                   {submitting ? "Submitting…" : "Request Pilot Access"}
                 </button>
               </div>
