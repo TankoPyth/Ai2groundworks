@@ -80,25 +80,30 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
     // plain-text email body
     fd.set("message", buildEmailSummary(fd));
 
-    // send JSON to Formspree
-    const body: Record<string, any> = {};
-    fd.forEach((v, k) => (body[k] = v));
 
     try {
       setSubmitting(true);
       const res = await fetch(formspreeEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(body),
+        headers: { 
+          "Accept": "application/json"
+        },
+        body: fd,
       });
-      if (!res.ok) throw new Error("Form submit failed");
-      onClose();            // success: close modal
-      setStep(1);           // reset
-      setProjectTypes([]);
-      setConsent(false);
-      form.reset();
+      
+      if (res.ok) {
+        // Success - show confirmation and close modal
+        alert("Thank you! Your pilot program application has been submitted successfully. We'll be in touch within 24-48 hours.");
+        onClose();            // success: close modal
+        setStep(1);           // reset
+        setProjectTypes([]);
+        setConsent(false);
+        form.reset();
+      } else {
+        throw new Error("Form submission failed");
+      }
     } catch {
-      alert("Sorry, something went wrong. Please call us if this keeps happening.");
+      alert("Sorry, something went wrong submitting your application. Please try again or contact us directly at info@ai2groundworks.com.au");
     } finally {
       setSubmitting(false);
     }
