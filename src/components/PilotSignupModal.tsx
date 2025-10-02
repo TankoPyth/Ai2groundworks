@@ -1,4 +1,5 @@
 import React from "react";
+import SuccessNotification from "./ui/SuccessNotification";
 
 type Props = {
   isOpen: boolean;
@@ -46,6 +47,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
   const [submitting, setSubmitting] = React.useState(false);
   const [projectTypes, setProjectTypes] = React.useState<ProjectType[]>([]);
   const [consent, setConsent] = React.useState(false);
+  const [showSuccess, setShowSuccess] = React.useState(false);
 
   if (!isOpen) return null;
 
@@ -92,9 +94,9 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
       });
       
       if (res.ok) {
-        // Success - show confirmation and close modal
-        alert("Thank you! Your pilot program application has been submitted successfully. We'll be in touch within 24-48 hours.");
-        onClose();            // success: close modal
+        // Success - show notification and close modal
+        setShowSuccess(true);
+        onClose();            // Close modal immediately
         setStep(1);           // reset
         setProjectTypes([]);
         setConsent(false);
@@ -103,6 +105,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
         throw new Error("Form submission failed");
       }
     } catch {
+      // Keep the alert for errors since they need immediate attention
       alert("Sorry, something went wrong submitting your application. Please try again or contact us directly at info@ai2groundworks.com.au");
     } finally {
       setSubmitting(false);
@@ -110,7 +113,8 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
   }
 
   return (
-    <div className="fixed inset-0 z-[100]">
+    <>
+      <div className="fixed inset-0 z-[100]">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       <div className="absolute inset-0 flex items-center justify-center px-4">
         <div className="w-full max-w-2xl rounded-2xl bg-dark-primary/95 backdrop-blur-xl border border-white/20 p-6 shadow-2xl">
@@ -277,7 +281,17 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
           </form>
         </div>
       </div>
-    </div>
+      </div>
+      
+      {/* Success Notification */}
+      <SuccessNotification 
+        isVisible={showSuccess}
+        onClose={() => setShowSuccess(false)}
+        title="Application Submitted!"
+        message="Thank you for your interest in our pilot program. We've sent you a confirmation email and will be in touch within 24-48 hours."
+        autoCloseDelay={6000}
+      />
+    </>
   );
 }
 
