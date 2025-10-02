@@ -35,19 +35,15 @@ export default function Header() {
     { name: 'Contact', url: '/contact', icon: MessageSquare }
   ];
 
-  // Close mobile menu when clicking outside or on escape
-  React.useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsMobileMenuOpen(false);
-      }
-    };
+  // Handle mobile menu toggle
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
-    if (isMobileMenuOpen) {
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
-    }
-  }, [isMobileMenuOpen]);
+  const handleMobileMenuClose = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-primary/80 backdrop-blur-xl border-b border-white/8">
@@ -55,9 +51,10 @@ export default function Header() {
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button */}
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
+              onClick={handleMobileMenuToggle}
               className="md:hidden w-10 h-10 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 touch-manipulation"
               aria-label="Open navigation menu"
+              aria-expanded={isMobileMenuOpen}
             >
               <Menu className="w-5 h-5 text-white" />
             </button>
@@ -99,17 +96,17 @@ export default function Header() {
                       to={item.url}
                       className={cn(
                         "relative cursor-pointer text-sm font-semibold px-4 lg:px-5 py-1.5 rounded-full transition-all duration-300 ease-out",
-                        "text-white/80 hover:text-cyan-primary hover:bg-white/10",
-                        isActive && "bg-white/10 text-cyan-primary"
+                        "text-white/80 hover:text-white hover:bg-white/10",
+                        isActive && "bg-white/10 text-white"
                       )}
                     >
                       <span>{item.name}</span>
                       {isActive && (
-                        <div className="absolute inset-0 w-full bg-cyan-primary/5 rounded-full -z-10 animate-pulse">
-                          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-cyan-primary rounded-t-full">
-                            <div className="absolute w-12 h-6 bg-cyan-primary/20 rounded-full blur-md -top-2 -left-2 animate-pulse" />
-                            <div className="absolute w-8 h-6 bg-cyan-primary/20 rounded-full blur-md -top-1 animate-pulse" />
-                            <div className="absolute w-4 h-4 bg-cyan-primary/20 rounded-full blur-sm top-0 left-2 animate-pulse" />
+                        <div className="absolute inset-0 w-full bg-white/5 rounded-full -z-10 animate-pulse">
+                          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-white rounded-t-full">
+                            <div className="absolute w-12 h-6 bg-white/20 rounded-full blur-md -top-2 -left-2 animate-pulse" />
+                            <div className="absolute w-8 h-6 bg-white/20 rounded-full blur-md -top-1 animate-pulse" />
+                            <div className="absolute w-4 h-4 bg-white/20 rounded-full blur-sm top-0 left-2 animate-pulse" />
                           </div>
                         </div>
                       )}
@@ -136,7 +133,7 @@ export default function Header() {
       {/* Mobile Sidebar */}
       <MobileSidebar 
         isOpen={isMobileMenuOpen} 
-        onClose={() => setIsMobileMenuOpen(false)} 
+        onClose={handleMobileMenuClose}
       />
     </>
   );

@@ -32,8 +32,31 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
 
   // Close sidebar when route changes
   useEffect(() => {
-    onClose();
+    if (isOpen) {
+      onClose();
+    }
   }, [location.pathname, onClose]);
+
+  // Handle escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
+    }
+  }, [isOpen, onClose]);
+
+  // Handle backdrop click
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   return (
     <>
@@ -41,7 +64,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
       {isOpen && (
         <div 
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
-          onClick={onClose}
+          onClick={handleBackdropClick}
         />
       )}
 
@@ -77,6 +100,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
                 <Link
                   key={item.name}
                   to={item.url}
+                  onClick={onClose}
                   className={cn(
                     "flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 touch-manipulation active:scale-95",
                     isActive 
