@@ -35,7 +35,7 @@ export default function PilotProgram() {
   }, []);
 
   const benefits = [
-    "Free 3-month access to full platform",
+    "3-month access to full platform",
     "Dedicated onboarding and support", 
     "Direct input on product development",
     "Priority access to new features",
