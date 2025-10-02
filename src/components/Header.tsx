@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Target, Users, MessageSquare, Building2, Menu } from 'lucide-react';
-import logoSpin from '../assets/images/logo_spin.gif';
 import { InteractiveHoverButton } from './ui/interactive-hover-button';
 import MobileSidebar from './ui/MobileSidebar';
 import { cn } from '../lib/utils';
@@ -51,22 +50,7 @@ export default function Header() {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 md:space-x-3 hover:opacity-80 transition-opacity flex-1 md:flex-initial justify-center md:justify-start">
               <div className="w-8 h-8 flex items-center justify-center">
-                <img 
-                  src={logoSpin}
-                  alt="Ai²Groundworks Logo" 
-                  className="w-full h-full object-contain" 
-                  onError={(e) => {
-                    console.log('Logo failed to load, falling back to icon');
-                    const target = e.currentTarget;
-                    target.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.innerHTML = '<svg class="w-6 h-6 text-cyan-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>';
-                    target.parentNode?.appendChild(fallback);
-                  }}
-                  onLoad={() => {
-                    console.log('Logo loaded successfully');
-                  }}
-                />
+                <Building2 className="w-6 h-6 text-cyan-primary" />
               </div>
               <span className="text-base md:text-lg lg:text-xl font-semibold text-white tracking-tight">Ai²Groundworks</span>
             </Link>

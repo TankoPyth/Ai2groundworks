@@ -35,6 +35,23 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
     onClose();
   }, [location.pathname, onClose]);
 
+  // Handle escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen, onClose]);
+
   return (
     <>
       {/* Backdrop */}
@@ -47,7 +64,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
 
       {/* Sidebar */}
       <div className={cn(
-        "fixed top-0 left-0 h-full w-80 bg-dark-primary/95 backdrop-blur-xl border-r border-white/10 z-50 transform transition-transform duration-300 ease-out md:hidden",
+        "fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-dark-primary/95 backdrop-blur-xl border-r border-white/10 z-50 transform transition-transform duration-300 ease-out md:hidden",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         
@@ -98,7 +115,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
               window.dispatchEvent(new CustomEvent('openPilotModal'));
               onClose();
             }}
-            className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg"
+            className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg active:scale-95"
           >
             Apply for pilot program
           </button>
