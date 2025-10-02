@@ -106,14 +106,18 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
 
   return (
     <div className="fixed inset-0 z-[100]">
-      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       <div className="absolute inset-0 flex items-center justify-center px-4">
-        <div className="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl">
+        <div className="w-full max-w-2xl rounded-2xl bg-dark-primary/95 backdrop-blur-xl border border-white/20 p-6 shadow-2xl">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold">
+            <h3 className="text-xl font-semibold text-white">
               {step === 1 ? "Pilot Program Signup — Company" : "Pilot Program Signup — Details"}
             </h3>
-            <button onClick={onClose} className="rounded-md p-1 text-neutral-500 hover:bg-neutral-100" aria-label="Close">✕</button>
+            <button onClick={onClose} className="rounded-md p-2 text-silver-secondary hover:bg-white/10 hover:text-white transition-colors" aria-label="Close">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-6">
@@ -124,61 +128,61 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
             <div aria-hidden={step !== 1} className={step === 1 ? "" : "hidden"}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Field label="Company name" required>
-                  <input name="companyName" required className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm" />
+                  <input name="companyName" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300" placeholder="Your company name" />
                 </Field>
                 <Field label="ABN (optional)">
-                  <input name="abn" className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm" />
+                  <input name="abn" className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300" placeholder="12 345 678 901" />
                 </Field>
                 <Field label="Contact name" required>
-                  <input name="fullName" required className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm" />
+                  <input name="fullName" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300" placeholder="Your full name" />
                 </Field>
                 <Field label="Role / title" required>
-                  <select name="role" required className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm">
-                    <option value="">Select…</option>
-                    <option>Owner / Director</option>
-                    <option>Project Manager</option>
-                    <option>Estimator</option>
-                    <option>Ops / Site</option>
-                    <option>Admin</option>
-                    <option>IT / Systems</option>
-                    <option>Other</option>
+                  <select name="role" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300">
+                    <option value="" className="bg-dark-primary text-white">Select…</option>
+                    <option className="bg-dark-primary text-white">Owner / Director</option>
+                    <option className="bg-dark-primary text-white">Project Manager</option>
+                    <option className="bg-dark-primary text-white">Estimator</option>
+                    <option className="bg-dark-primary text-white">Ops / Site</option>
+                    <option className="bg-dark-primary text-white">Admin</option>
+                    <option className="bg-dark-primary text-white">IT / Systems</option>
+                    <option className="bg-dark-primary text-white">Other</option>
                   </select>
                 </Field>
                 <Field label="Work email" required className="sm:col-span-2">
-                  <input name="email" type="email" required className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm" />
+                  <input name="email" type="email" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300" placeholder="your@email.com" />
                 </Field>
                 <Field label="Mobile" required>
-                  <input name="mobile" type="tel" required className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm" />
+                  <input name="mobile" type="tel" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300" placeholder="+61 xxx xxx xxx" />
                 </Field>
                 <Field label="Head office location" required>
-                  <input name="location" placeholder="e.g., Newcastle, NSW" required className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm" />
+                  <input name="location" placeholder="e.g., Newcastle, NSW" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300" />
                 </Field>
                 <Field label="Company size" required>
-                  <select name="companySize" required className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm">
-                    <option value="">Select…</option>
-                    <option>1–4</option>
-                    <option>5–10</option>
-                    <option>11–25</option>
-                    <option>26–50</option>
-                    <option>51–100</option>
-                    <option>100+</option>
+                  <select name="companySize" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300">
+                    <option value="" className="bg-dark-primary text-white">Select…</option>
+                    <option className="bg-dark-primary text-white">1–4</option>
+                    <option className="bg-dark-primary text-white">5–10</option>
+                    <option className="bg-dark-primary text-white">11–25</option>
+                    <option className="bg-dark-primary text-white">26–50</option>
+                    <option className="bg-dark-primary text-white">51–100</option>
+                    <option className="bg-dark-primary text-white">100+</option>
                   </select>
                 </Field>
                 <Field label="Primary construction type" required>
-                  <select name="constructionType" required className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm">
-                    <option value="">Select…</option>
-                    <option>Civil</option>
-                    <option>Building</option>
-                    <option>Civil + Building</option>
-                    <option>Landscaping</option>
-                    <option>Services (MEP)</option>
-                    <option>Other</option>
+                  <select name="constructionType" required className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300">
+                    <option value="" className="bg-dark-primary text-white">Select…</option>
+                    <option className="bg-dark-primary text-white">Civil</option>
+                    <option className="bg-dark-primary text-white">Building</option>
+                    <option className="bg-dark-primary text-white">Civil + Building</option>
+                    <option className="bg-dark-primary text-white">Landscaping</option>
+                    <option className="bg-dark-primary text-white">Services (MEP)</option>
+                    <option className="bg-dark-primary text-white">Other</option>
                   </select>
                 </Field>
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Typical project categories (select all that apply)</label>
+                <label className="block text-sm font-medium mb-2 text-white">Typical project categories (select all that apply)</label>
                 <div className="flex flex-wrap gap-2">
                   {PROJECT_TYPES.map((pt) => {
                     const active = projectTypes.includes(pt);
@@ -192,7 +196,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
                           )
                         }
                         className={`px-3 py-1.5 rounded-full border text-sm ${
-                          active ? "bg-neutral-900 text-white border-neutral-900" : "border-neutral-300 text-neutral-700 hover:bg-neutral-100"
+                          active ? "bg-cyan-primary text-white border-cyan-primary" : "border-white/20 text-silver-secondary hover:bg-white/10 hover:text-white"
                         }`}
                       >
                         {pt}
@@ -204,7 +208,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
               </div>
 
               <div className="flex items-center justify-end">
-                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-lg bg-neutral-900 px-4 py-2 text-sm font-semibold text-white hover:bg-neutral-800">
+                <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300">
                   Next
                 </button>
               </div>
@@ -214,39 +218,39 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
             <div aria-hidden={step !== 2} className={step === 2 ? "" : "hidden"}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Field label="Active projects / month">
-                  <select name="activeProjects" className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm">
-                    <option value="">Select…</option>
-                    <option>0–2</option>
-                    <option>3–5</option>
-                    <option>6–10</option>
-                    <option>11–20</option>
-                    <option>20+</option>
+                  <select name="activeProjects" className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300">
+                    <option value="" className="bg-dark-primary text-white">Select…</option>
+                    <option className="bg-dark-primary text-white">0–2</option>
+                    <option className="bg-dark-primary text-white">3–5</option>
+                    <option className="bg-dark-primary text-white">6–10</option>
+                    <option className="bg-dark-primary text-white">11–20</option>
+                    <option className="bg-dark-primary text-white">20+</option>
                   </select>
                 </Field>
                 <Field label="Current software stack">
-                  <input name="currentTools" placeholder="e.g., Xero, MYOB, Simpro, Buildxact, Excel" className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm" />
+                  <input name="currentTools" placeholder="e.g., Xero, MYOB, Simpro, Buildxact, Excel" className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300" />
                 </Field>
                 <Field label="Best contact window">
-                  <select name="bestTime" className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm">
-                    <option>Anytime</option>
-                    <option>7–10am</option>
-                    <option>10–2</option>
-                    <option>2–5</option>
-                    <option>After hours</option>
+                  <select name="bestTime" className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300">
+                    <option className="bg-dark-primary text-white">Anytime</option>
+                    <option className="bg-dark-primary text-white">7–10am</option>
+                    <option className="bg-dark-primary text-white">10–2</option>
+                    <option className="bg-dark-primary text-white">2–5</option>
+                    <option className="bg-dark-primary text-white">After hours</option>
                   </select>
                 </Field>
                 <div />
                 <Field label="Notes (optional)" className="sm:col-span-2">
-                  <textarea name="notes" rows={4} className="block w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm" />
+                  <textarea name="notes" rows={4} className="block w-full rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-2 text-sm text-white placeholder-silver-tertiary focus:outline-none focus:ring-2 focus:ring-cyan-primary/50 focus:border-cyan-primary/50 transition-all duration-300 resize-none" placeholder="Tell us about your specific needs or challenges..." />
                 </Field>
               </div>
 
               <div className="flex items-center gap-3">
-                <label className="flex items-center gap-2 text-sm text-neutral-700">
+                <label className="flex items-center gap-2 text-sm text-silver-secondary">
                   <input type="checkbox" name="smsOk" defaultChecked />
                   I'm happy to receive SMS updates
                 </label>
-                <label className="flex items-center gap-2 text-sm text-neutral-700">
+                <label className="flex items-center gap-2 text-sm text-silver-secondary">
                   <input type="checkbox" checked={consent} onChange={e => setConsent(e.currentTarget.checked)} />
                   I agree to share information for pilot evaluation *
                 </label>
@@ -256,14 +260,14 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
               <input type="hidden" name="subject" value="" />
 
               <div className="flex items-center justify-between">
-                <button type="button" onClick={() => setStep(1)} className="rounded-lg border border-neutral-300 px-5 py-2.5 text-sm hover:bg-neutral-50">
+                <button type="button" onClick={() => setStep(1)} className="rounded-lg border border-white/20 px-5 py-2.5 text-sm text-silver-secondary hover:bg-white/10 hover:text-white transition-all duration-300">
                   Back
                 </button>
-                <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-lg bg-neutral-900 px-4 py-2 text-sm font-semibold text-white hover:bg-neutral-800 disabled:opacity-60">
+                <button type="submit" disabled={submitting} className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-primary to-cyan-tertiary px-6 py-2 text-sm font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 disabled:opacity-60 disabled:transform-none">
                   {submitting ? "Submitting…" : "Request Pilot Access"}
                 </button>
               </div>
-              <p className="text-xs text-neutral-500">We typically reply within 24–48 hours.</p>
+              <p className="text-xs text-silver-tertiary">We typically reply within 24–48 hours.</p>
             </div>
           </form>
         </div>
@@ -275,7 +279,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
 function Field({ label, children, required, className }: { label: string; children: React.ReactNode; required?: boolean; className?: string }) {
   return (
     <label className={`block ${className ?? ""}`}>
-      <span className="block text-sm font-medium mb-2">{label}{required ? " *" : ""}</span>
+      <span className="block text-sm font-medium mb-2 text-white">{label}{required ? <span className="text-cyan-primary"> *</span> : ""}</span>
       {children}
     </label>
   );
