@@ -2,7 +2,6 @@ import React from 'react';
 import Hero from './Hero';
 import HowItWorks from './HowItWorks';
 import VisualBreak from './VisualBreak';
-import ValuePillars from './ValuePillars';
 import RoleFeatures from './RoleFeatures';
 import SectionDivider from './SectionDivider';
 import PilotProgram from './PilotProgram';
@@ -31,7 +30,6 @@ export default function HomePage() {
           <Hero />
           <HowItWorks />
           <VisualBreak />
-          <ValuePillars />
           <SectionDivider />
           <RoleFeatures />
           <Footer />
