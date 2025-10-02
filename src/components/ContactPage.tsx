@@ -53,7 +53,7 @@ export default function ContactPage() {
     {
       icon: Clock,
       question: "How quickly can we get started with the pilot program?",
-      answer: "Once approved for our pilot program, we typically have your AI² Site workspace set up within 48-72 hours. This includes document upload, team onboarding, and initial AI training on your project data."
+      answer: "Once approved for our pilot program, we typically have your AI² Site workspace set up within 1-2 weeks. This includes document upload, team onboarding, and initial AI training on your project data."
     },
     {
       icon: HelpCircle,
