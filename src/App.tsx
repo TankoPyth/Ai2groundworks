@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import MissionPage from './components/MissionPage';
-import ContactPage from './components/ContactPage';
-import TeamPage from './components/TeamPage';
-import PrivacyPage from './components/PrivacyPage';
-import TermsPage from './components/TermsPage';
+import HomePage from './pages/HomePage';
+import MissionPage from './pages/MissionPage';
+import ContactPage from './pages/ContactPage';
+import TeamPage from './pages/TeamPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
 
 function App() {
   return (

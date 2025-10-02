@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Linkedin, Mail } from 'lucide-react';
-import { BackgroundGradientAnimation } from './ui/background-gradient-animation';
-import Header from './Header';
+import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
+import Header from '../components/Header';
 
 interface TeamMember {
   name: string;

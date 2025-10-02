@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Target, CheckCircle, ArrowRight, HelpCircle, FileText, Shield, BarChart3, Users, Clock } from 'lucide-react';
-import { InteractiveHoverButton } from './ui/interactive-hover-button';
-import PilotSignupModal from './PilotSignupModal';
-import { BackgroundGradientAnimation } from './ui/background-gradient-animation';
-import Header from './Header';
+import { InteractiveHoverButton } from '../components/ui/interactive-hover-button';
+import PilotSignupModal from '../components/PilotSignupModal';
+import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
+import Header from '../components/Header';
 
 export default function ContactPage() {
   const [isVisible, setIsVisible] = useState(false);

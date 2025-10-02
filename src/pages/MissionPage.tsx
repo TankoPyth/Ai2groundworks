@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Target } from 'lucide-react';
-import { InteractiveHoverButton } from './ui/interactive-hover-button';
-import PilotSignupModal from './PilotSignupModal';
-import { BackgroundGradientAnimation } from './ui/background-gradient-animation';
-import BackgroundPaperShaders from './ui/background-paper-shaders';
-import Header from './Header';
+import { InteractiveHoverButton } from '../components/ui/interactive-hover-button';
+import PilotSignupModal from '../components/PilotSignupModal';
+import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
+import BackgroundPaperShaders from '../components/ui/background-paper-shaders';
+import Header from '../components/Header';
 
 export default function MissionPage() {
   const [isVisible, setIsVisible] = useState(false);

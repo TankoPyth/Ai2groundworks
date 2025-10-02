@@ -1,13 +1,13 @@
 import React from 'react';
-import Hero from './Hero';
-import HowItWorks from './HowItWorks';
-import WhatItDoes from './WhatItDoes';
-import VisualBreak from './VisualBreak';
-import RoleFeatures from './RoleFeatures';
-import SectionDivider from './SectionDivider';
-import PilotProgram from './PilotProgram';
-import Footer from './Footer';
-import { BackgroundGradientAnimation } from './ui/background-gradient-animation';
+import Hero from '../components/Hero';
+import HowItWorks from '../components/HowItWorks';
+import WhatItDoes from '../components/WhatItDoes';
+import VisualBreak from '../components/VisualBreak';
+import RoleFeatures from '../components/RoleFeatures';
+import SectionDivider from '../components/SectionDivider';
+import PilotProgram from '../components/PilotProgram';
+import Footer from '../components/Footer';
+import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 
 export default function HomePage() {
   return (

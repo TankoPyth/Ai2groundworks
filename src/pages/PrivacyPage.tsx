@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Eye, Lock, FileText, Users, Database, Mail, Phone } from 'lucide-react';
-import { BackgroundGradientAnimation } from './ui/background-gradient-animation';
-import Header from './Header';
+import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
+import Header from '../components/Header';
 
 export default function PrivacyPage() {
   const [isVisible, setIsVisible] = useState(false);
