@@ -30,7 +30,6 @@ export default function HomePage() {
           <Hero />
           <HowItWorks />
           <VisualBreak />
-          <SectionDivider />
           <RoleFeatures />
           <Footer />
         </div>
