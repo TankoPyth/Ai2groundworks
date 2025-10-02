@@ -86,7 +86,7 @@ export default function TeamPage() {
                 key={index}
                 className={`transition-all duration-1000 delay-${index * 200} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               >
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 hover:bg-white/10 hover:border-cyan-primary/30 transition-all duration-300 h-full">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 hover:bg-white/10 hover:border-cyan-primary/30 transition-all duration-300 h-full flex flex-col">
                   
                   {/* Photo */}
                   <div className="relative mb-4 md:mb-6">
@@ -106,13 +106,15 @@ export default function TeamPage() {
                   </div>
 
                   {/* Info */}
-                  <div className="text-center space-y-2 md:space-y-3">
+                  <div className="text-center space-y-2 md:space-y-3 flex-1 flex flex-col">
                     <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white">{member.name}</h3>
                     <p className="text-cyan-primary font-semibold text-xs sm:text-sm">{member.title}</p>
-                    <p className="text-silver-secondary text-xs sm:text-sm leading-relaxed">{member.bio}</p>
+                    <div className="flex-1 flex items-center justify-center">
+                      <p className="text-silver-secondary text-xs sm:text-sm leading-relaxed">{member.bio}</p>
+                    </div>
                     
                     {/* Contact Links */}
-                    <div className="flex items-center justify-center space-x-3 md:space-x-4 pt-3 md:pt-4">
+                    <div className="flex items-center justify-center space-x-3 md:space-x-4 pt-3 md:pt-4 mt-auto">
                       <a 
                         href={`mailto:${member.email}`}
                         className="w-8 h-8 md:w-10 md:h-10 bg-white/10 hover:bg-cyan-primary/20 border border-white/20 hover:border-cyan-primary/40 rounded-lg flex items-center justify-center transition-all duration-300 group"
