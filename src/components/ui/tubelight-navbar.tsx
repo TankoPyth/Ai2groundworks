@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { DivideIcon as LucideIcon } from "lucide-react"
+import { Divide as LucideIcon } from "lucide-react"
 import { cn } from "../../lib/utils"
 
 interface NavItem {
