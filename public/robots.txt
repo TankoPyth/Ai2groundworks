@@ -1,0 +1,44 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ai2groundworks.com.au/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: BingBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Important pages for AI understanding
+# Homepage - main product information
+# /mission - company mission and values  
+# /team - founding team information
+# /contact - contact information and FAQ
+# /privacy - privacy policy
+# /terms - terms of service

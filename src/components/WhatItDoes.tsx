@@ -46,10 +46,10 @@ export default function WhatItDoes() {
           
           {/* Header */}
           <div className="text-center mb-6">
-            <h2 className="text-white mb-4 leading-tight text-2xl sm:text-3xl lg:text-4xl font-bold">
+            <h2 className="text-white mb-4 leading-tight text-2xl sm:text-3xl lg:text-4xl font-bold" id="ai-site-features">
               What <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">AI² Site</span> Does
             </h2>
-            <p className="text-silver-secondary mx-auto font-light max-w-2xl text-sm lg:text-base px-4">
+            <p className="text-silver-secondary mx-auto font-light max-w-2xl text-sm lg:text-base px-4" role="doc-subtitle">
               AI² Site turns your project documents into a smart, searchable system.
             </p>
           </div>

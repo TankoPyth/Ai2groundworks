@@ -49,10 +49,10 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-8 relative bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         <div className={`text-center mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-white mb-4 text-2xl sm:text-3xl lg:text-4xl font-bold">
+          <h2 className="text-white mb-4 text-2xl sm:text-3xl lg:text-4xl font-bold" id="construction-oversight-platform">
             A <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">complete</span> platform for construction <span className="underline decoration-cyan-tertiary decoration-4 underline-offset-8">oversight</span>
           </h2>
-          <p className="text-silver-secondary mx-auto font-light max-w-2xl text-sm lg:text-base px-4">
+          <p className="text-silver-secondary mx-auto font-light max-w-2xl text-sm lg:text-base px-4" role="doc-subtitle">
             From document analysis to real-time insights, everything you need to run smarter construction projects.
           </p>
         </div>

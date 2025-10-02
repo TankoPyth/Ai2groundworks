@@ -64,7 +64,7 @@ export default function Hero() {
             
             {/* Left - Headline and Subtext */}
             <div className="text-center lg:text-left">
-              <h1 className="text-white mb-4 leading-[1.1] tracking-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold">
+              <h1 className="text-white mb-4 leading-[1.1] tracking-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold" role="banner">
                 AI² Site <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">Pilot</span>
                 <br />
                 <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">
@@ -72,7 +72,7 @@ export default function Hero() {
                 </span>
               </h1>
               
-              <p className="text-silver-secondary mb-6 font-light text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-silver-secondary mb-6 font-light text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0" role="contentinfo">
                 Be among the <span className="text-white font-semibold">first in Australia</span> to deploy an AI assistant on a live civil construction project.
               </p>
             </div>

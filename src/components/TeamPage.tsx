@@ -71,10 +71,10 @@ export default function TeamPage() {
           
           {/* Header Section */}
           <div className={`text-center mb-6 md:mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-white mb-4 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
+            <h1 className="text-white mb-4 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold" role="banner">
               Meet the <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">founding</span> team
             </h1>
-            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0">
+            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0" role="doc-subtitle">
               Experienced leaders bringing AI innovation to Australian construction
             </p>
           </div>

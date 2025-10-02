@@ -46,10 +46,10 @@ export default function MissionPage() {
           
           {/* Header Section */}
           <div className={`text-center mb-6 md:mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-white mb-6 leading-tight max-w-3xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-bold">
+            <h1 className="text-white mb-6 leading-tight max-w-3xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-bold" role="banner">
               Our <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">Mission</span>
             </h1>
-            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0">
+            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0" role="doc-subtitle">
               Building the future of construction through AI-powered oversight
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function MissionPage() {
             {/* Mission Statement Card */}
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 mb-6 md:mb-8 hover:bg-white/8 hover:border-cyan-primary/20 transition-all duration-500">
               <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight mb-6 md:mb-8">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight mb-6 md:mb-8" id="mission-statement">
                   AI² GroundWorks <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">Mission</span> Statement
                 </h2>
                 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Target, CheckCircle, ArrowRight } from 'lucide-react';
+import { Target, CheckCircle, ArrowRight, HelpCircle, FileText, Shield, BarChart3, Users, Clock } from 'lucide-react';
 import { InteractiveHoverButton } from './ui/interactive-hover-button';
 import PilotSignupModal from './PilotSignupModal';
 import { BackgroundGradientAnimation } from './ui/background-gradient-animation';
@@ -29,6 +29,39 @@ export default function ContactPage() {
     "Quarterly business reviews"
   ];
 
+  const faqs = [
+    {
+      icon: FileText,
+      question: "What types of construction documents can AI² Site analyze?",
+      answer: "AI² Site can process and analyze all standard construction documents including project plans, specifications, safety reports, compliance documents, quotes, contracts, progress reports, and site photos. Our AI understands Australian construction standards and terminology."
+    },
+    {
+      icon: Shield,
+      question: "How does AI² Site help with safety compliance on construction sites?",
+      answer: "Our platform continuously monitors safety documentation, identifies potential hazards from uploaded reports and images, tracks compliance with Australian safety standards, and provides proactive alerts when safety protocols may be at risk."
+    },
+    {
+      icon: BarChart3,
+      question: "What kind of insights and analytics does the platform provide?",
+      answer: "AI² Site delivers predictive project analytics, budget variance tracking, timeline optimization recommendations, resource allocation insights, risk assessment reports, and performance benchmarking against industry standards."
+    },
+    {
+      icon: Users,
+      question: "How does the role-based system work for different team members?",
+      answer: "Each role (Project Manager, Safety Officer, Supervisor) gets a dedicated AI assistant with specialized knowledge and memory. PMs focus on scheduling and budgets, Safety Officers get compliance monitoring, and Supervisors receive site-specific guidance."
+    },
+    {
+      icon: Clock,
+      question: "How quickly can we get started with the pilot program?",
+      answer: "Once approved for our pilot program, we typically have your AI² Site workspace set up within 48-72 hours. This includes document upload, team onboarding, and initial AI training on your project data."
+    },
+    {
+      icon: HelpCircle,
+      question: "What happens to our data and is it secure?",
+      answer: "Your project data remains completely private and secure. We use enterprise-grade encryption, Australian data centers, and strict access controls. Your data is never shared with other companies or used to train public AI models."
+    }
+  ];
+
   return (
     <BackgroundGradientAnimation
       gradientBackgroundStart="rgb(28, 25, 23)"
@@ -53,10 +86,10 @@ export default function ContactPage() {
           
           {/* Header section */}
           <div className={`text-center mb-6 md:mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-white mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
+            <h1 className="text-white mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold" role="banner">
               Be among the <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">first</span> in Australia
             </h1>
-            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0">
+            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0" role="doc-subtitle">
               Join our exclusive pilot program and help shape the future of AI-powered construction oversight.
             </p>
           </div>
@@ -96,9 +129,35 @@ export default function ContactPage() {
               </div>
             </div>
             
-            {/* Contact Information - moved inline */}
+            {/* FAQ Section */}
+            <div className="mt-8 md:mt-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 md:p-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 text-center" id="frequently-asked-questions">
+                Frequently Asked <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">Questions</span>
+              </h2>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {faqs.map((faq, index) => (
+                  <div key={index} 
+                       className={`transition-all duration-700 delay-${index * 100} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6 hover:bg-white/10 hover:border-cyan-primary/30 transition-all duration-300 h-full">
+                      <div className="flex items-start space-x-4">
+                        <div className="w-10 h-10 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-xl flex items-center justify-center flex-shrink-0">
+                          <faq.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-white font-semibold text-sm md:text-base mb-3 leading-tight">{faq.question}</h3>
+                          <p className="text-silver-secondary text-xs md:text-sm leading-relaxed">{faq.answer}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Contact Information */}
             <div className="mt-4 md:mt-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6">
-              <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 text-center">Get in touch</h3>
+              <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 text-center" id="contact-information">Get in touch</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-center">
                 <div>
                   <h4 className="text-white font-semibold mb-2 text-sm md:text-base">Email</h4>
