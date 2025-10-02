@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Target, CheckCircle, ArrowRight } from 'lucide-react';
 import { InteractiveHoverButton } from './ui/interactive-hover-button';
-import PilotProgramModal from './ui/PilotProgramModal';
+import PilotSignupModal from './PilotSignupModal';
 
 export default function PilotProgram() {
   const [isVisible, setIsVisible] = useState(false);
@@ -102,9 +102,10 @@ export default function PilotProgram() {
       </div>
       
       {/* Pilot Program Modal */}
-      <PilotProgramModal 
+      <PilotSignupModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
+        formspreeEndpoint="https://formspree.io/f/xdkogqpw"
       />
     </section>
   );

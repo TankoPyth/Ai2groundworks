@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Linkedin, FileText, Users, Shield, BarChart3, Lock } from 'lucide-react';
 import { InteractiveHoverButton } from './ui/interactive-hover-button';
-import PilotProgramModal from './ui/PilotProgramModal';
+import PilotSignupModal from './PilotSignupModal';
 import Header from './Header';
 
 export default function Hero() {
@@ -159,9 +159,10 @@ export default function Hero() {
       </section>
       
       {/* Pilot Program Modal */}
-      <PilotProgramModal 
+      <PilotSignupModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
+        formspreeEndpoint="https://formspree.io/f/xdkogqpw"
       />
     </>
   );

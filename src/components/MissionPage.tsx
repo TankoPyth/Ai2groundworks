@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Target } from 'lucide-react';
 import { InteractiveHoverButton } from './ui/interactive-hover-button';
-import PilotProgramModal from './ui/PilotProgramModal';
+import PilotSignupModal from './PilotSignupModal';
 import { BackgroundGradientAnimation } from './ui/background-gradient-animation';
 import BackgroundPaperShaders from './ui/background-paper-shaders';
 import Header from './Header';
@@ -159,9 +159,10 @@ export default function MissionPage() {
       </main>
       
       {/* Pilot Program Modal */}
-      <PilotProgramModal 
+      <PilotSignupModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
+        formspreeEndpoint="https://formspree.io/f/xdkogqpw"
       />
     </BackgroundGradientAnimation>
   );
