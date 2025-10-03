@@ -130,31 +130,31 @@ export default function Header() {
       
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 z-40 md:hidden">
+        <div className="fixed top-0 left-0 right-0 bottom-0 z-[60] md:hidden">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/30"
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={closeMobileMenu}
           />
           
           {/* Mobile Dropdown - Positioned below header */}
-          <div className="absolute top-16 right-4 left-4 max-w-sm mx-auto bg-stone-900 border-2 border-stone-700 rounded-2xl shadow-2xl">
+          <div className="absolute top-16 right-4 left-4 max-w-sm mx-auto bg-gray-900 border-2 border-gray-700 rounded-2xl shadow-2xl z-[70]">
             
-            <div className="flex items-center justify-between p-3 border-b border-stone-700">
+            <div className="flex items-center justify-between p-4 border-b-2 border-gray-700 bg-gray-800 rounded-t-2xl">
               <span className="text-base font-bold text-white">Menu</span>
               <button
                 onClick={closeMobileMenu}
-                className="w-7 h-7 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation"
+                className="w-8 h-8 bg-gray-700 hover:bg-gray-600 active:bg-gray-500 border-2 border-gray-600 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation shadow-lg"
                 aria-label="Close navigation menu"
                 type="button"
               >
-                <X className="w-4 h-4 text-white font-bold" />
+                <X className="w-5 h-5 text-white font-bold" />
               </button>
             </div>
 
             {/* Navigation */}
-            <nav className="p-3">
-              <div className="space-y-1.5">
+            <nav className="p-4 bg-gray-900">
+              <div className="space-y-2">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = activeTab === item.name;
@@ -165,14 +165,14 @@ export default function Header() {
                       to={item.url}
                       onClick={closeMobileMenu}
                       className={cn(
-                        "flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-300 touch-manipulation active:scale-95 font-medium",
+                        "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 touch-manipulation active:scale-95 font-medium shadow-sm",
                         isActive
-                          ? "bg-cyan-primary text-white font-bold border border-cyan-primary/50" 
-                          : "text-white hover:bg-stone-700 hover:shadow-md"
+                          ? "bg-cyan-primary text-white font-bold border-2 border-cyan-400 shadow-lg" 
+                          : "text-white bg-gray-800 hover:bg-gray-700 border-2 border-gray-700 hover:border-gray-600 hover:shadow-md"
                       )}
                     >
-                      <Icon className="w-4 h-4" />
-                      <span className="text-sm">{item.name}</span>
+                      <Icon className="w-5 h-5" />
+                      <span className="text-base font-semibold">{item.name}</span>
                     </Link>
                   );
                 })}
@@ -180,21 +180,21 @@ export default function Header() {
             </nav>
 
             {/* CTA Section */}
-            <div className="p-3 border-t border-stone-700">
+            <div className="p-4 border-t-2 border-gray-700 bg-gray-800 rounded-b-2xl">
               <button
                 onClick={() => {
                   closeMobileMenu();
                   window.dispatchEvent(new CustomEvent('openPilotModal'));
                 }}
-                className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation text-sm shadow-lg"
+                className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-xl active:scale-95 touch-manipulation text-base shadow-lg border-2 border-cyan-400"
                 type="button"
               >
                 Contact sales
               </button>
               
-              <div className="flex items-center justify-center space-x-2 text-stone-400 mt-2.5">
+              <div className="flex items-center justify-center space-x-2 text-gray-400 mt-3">
                 <div className="w-1.5 h-1.5 bg-cyan-primary rounded-full animate-pulse"></div>
-                <span className="text-xs">3-month pilot</span>
+                <span className="text-sm font-medium">3-month pilot</span>
               </div>
             </div>
           </div>
