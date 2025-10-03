@@ -81,12 +81,80 @@ export default function Header() {
                 />
               </div>
               <span className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white tracking-tight">Ai²Groundworks</span>
-               <div className="bg-stone-900 border-2 border-stone-700 rounded-xl shadow-2xl max-w-xs ml-auto mr-4">
+            </Link>
             
             {/* Navigation and Contact grouped together */}
-                 <div className="flex items-center justify-between p-3 border-b-2 border-stone-700">
-                   <span className="text-base font-bold text-white">Menu</span>
-              <div className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 backdrop-blur-lg py-0.5 px-0.5 rounded-full shadow-lg">
+            <div className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 backdrop-blur-lg py-0.5 px-0.5 rounded-full shadow-lg">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeTab === item.name;
+
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.url}
+                    className={cn(
+                      "relative cursor-pointer text-sm font-semibold px-4 lg:px-5 py-1.5 rounded-full transition-all duration-300 ease-out",
+                      "text-white/80 hover:text-white hover:bg-white/10",
+                      isActive && "bg-white/10 text-white"
+                    )}
+                  >
+                    <span>{item.name}</span>
+                    {isActive && (
+                      <div className="absolute inset-0 w-full bg-white/5 rounded-full -z-10 animate-pulse">
+                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-white rounded-t-full">
+                          <div className="absolute w-12 h-6 bg-white/20 rounded-full blur-md -top-2 -left-2 animate-pulse" />
+                          <div className="absolute w-8 h-6 bg-white/20 rounded-full blur-md -top-1 animate-pulse" />
+                          <div className="absolute w-4 h-4 bg-white/20 rounded-full blur-sm top-0 left-2 animate-pulse" />
+                        </div>
+                      </div>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+            
+            {/* Contact Button */}
+            <InteractiveHoverButton 
+              text="Contact sales" 
+              variant="primary"
+              className="px-2 sm:px-3 md:px-4 lg:px-5 py-1.5 text-xs sm:text-sm whitespace-nowrap"
+              onClick={() => {
+                // Dispatch custom event to open modal from any page
+                window.dispatchEvent(new CustomEvent('openPilotModal'));
+              }}
+            />
+          </div>
+        </div>
+      </nav>
+      
+      {/* Mobile Sidebar Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 z-40 md:hidden">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/30"
+            onClick={closeMobileMenu}
+          />
+          
+          {/* Mobile Dropdown - Positioned below header */}
+          <div className="absolute top-16 right-4 left-4 max-w-sm mx-auto bg-stone-900 border-2 border-stone-700 rounded-2xl shadow-2xl">
+            
+            <div className="flex items-center justify-between p-3 border-b border-stone-700">
+              <span className="text-base font-bold text-white">Menu</span>
+              <button
+                onClick={closeMobileMenu}
+                className="w-7 h-7 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation"
+                aria-label="Close navigation menu"
+                type="button"
+              >
+                <X className="w-4 h-4 text-white font-bold" />
+              </button>
+            </div>
+
+            {/* Navigation */}
+            <nav className="p-3">
+              <div className="space-y-1.5">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = activeTab === item.name;
@@ -95,108 +163,36 @@ export default function Header() {
                     <Link
                       key={item.name}
                       to={item.url}
-                      className={cn(
-                        "relative cursor-pointer text-sm font-semibold px-4 lg:px-5 py-1.5 rounded-full transition-all duration-300 ease-out",
-                        "text-white/80 hover:text-white hover:bg-white/10",
-                        isActive && "bg-white/10 text-white"
-                      )}
-                    >
-                      <span>{item.name}</span>
-                      {isActive && (
-                        <div className="absolute inset-0 w-full bg-white/5 rounded-full -z-10 animate-pulse">
-                          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-white rounded-t-full">
-                            <div className="absolute w-12 h-6 bg-white/20 rounded-full blur-md -top-2 -left-2 animate-pulse" />
-                            <div className="absolute w-8 h-6 bg-white/20 rounded-full blur-md -top-1 animate-pulse" />
-                            <div className="absolute w-4 h-4 bg-white/20 rounded-full blur-sm top-0 left-2 animate-pulse" />
-                          </div>
-                        </div>
-                      )}
-                    </Link>
-                  );
-                })}
-              </div>
-              
-              {/* Contact Button */}
-              <InteractiveHoverButton 
-                text="Contact sales" 
-                variant="primary"
-                className="px-2 sm:px-3 md:px-4 lg:px-5 py-1.5 text-xs sm:text-sm whitespace-nowrap"
-                onClick={() => {
-                  // Dispatch custom event to open modal from any page
-                  window.dispatchEvent(new CustomEvent('openPilotModal'));
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      </nav>
-      
-      {/* Mobile Sidebar Overlay */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 z-40 md:hidden mt-2 px-4">
-          {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm -z-10"
-            onClick={closeMobileMenu}
-          />
-          
-          {/* Compact Dropdown - Right below header */}
-          <div className="bg-dark-primary border border-white/20 rounded-xl shadow-xl max-w-xs ml-auto mr-4">
-            
-            <div className="fixed top-0 left-0 right-0 bottom-0 z-40 md:hidden">
-            <div className="flex items-center justify-between p-3 border-b border-white/10">
-              <span className="text-base font-semibold text-white">Menu</span>
-                className="absolute inset-0 bg-black/30"
-                onClick={closeMobileMenu}
-                className="w-7 h-7 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation"
-                aria-label="Close navigation menu"
-                type="button"
-              >
-                <X className="w-3 h-3 text-white" />
-              </button>
-            </div>
-
-            {/* Navigation */}
-            <nav className="p-3">
-              <div className="space-y-1.5">
-                {navItems.map((item) => {
-              {/* Mobile Dropdown - Positioned below header */}
-              <div className="absolute top-16 right-4 left-4 max-w-sm mx-auto bg-stone-900 border-2 border-stone-700 rounded-2xl shadow-2xl">
-
-                  return (
-                    <Link
-                      key={item.name}
-                      to={item.url}
                       onClick={closeMobileMenu}
-                              ? "bg-cyan-primary text-white font-bold border border-cyan-primary/50" 
-                               : "text-white hover:bg-stone-700 hover:shadow-md"
+                      className={cn(
+                        "flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-300 touch-manipulation active:scale-95 font-medium",
                         isActive
-                          ? "bg-cyan-primary/30 text-cyan-primary font-medium" 
-                          : "text-white hover:bg-white/10"
+                          ? "bg-cyan-primary text-white font-bold border border-cyan-primary/50" 
+                          : "text-white hover:bg-stone-700 hover:shadow-md"
                       )}
                     >
-                     <X className="w-4 h-4 text-white font-bold" />
+                      <Icon className="w-4 h-4" />
                       <span className="text-sm">{item.name}</span>
                     </Link>
                   );
                 })}
               </div>
-                <div className="p-3 border-t border-stone-700">
+            </nav>
 
             {/* CTA Section */}
-            <div className="p-3 border-t border-white/10">
+            <div className="p-3 border-t border-stone-700">
               <button
                 onClick={() => {
-                    className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation text-sm shadow-lg"
                   closeMobileMenu();
-                             "flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-300 touch-manipulation active:scale-95 font-medium",
-                className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-medium py-2.5 px-3 rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation text-sm"
+                  window.dispatchEvent(new CustomEvent('openPilotModal'));
+                }}
+                className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation text-sm shadow-lg"
                 type="button"
               >
-                   <div className="flex items-center justify-center space-x-2 text-stone-400 mt-2.5">
+                Contact sales
               </button>
               
-              <div className="flex items-center justify-center space-x-2 text-silver-tertiary mt-2.5">
+              <div className="flex items-center justify-center space-x-2 text-stone-400 mt-2.5">
                 <div className="w-1.5 h-1.5 bg-cyan-primary rounded-full animate-pulse"></div>
                 <span className="text-xs">3-month pilot</span>
               </div>
