@@ -24,7 +24,7 @@ export default function Footer() {
             <div className="flex flex-wrap gap-4 text-sm">
               <a href="mailto:info@ai2groundworks.com.au" className="flex items-center space-x-2 text-silver-secondary hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-cyan-primary" />
-                <span>info@ai2groundworks.com.au</span>
+                <span>dale@ai2groundworks.com.au</span>
               </a>
               <a href="tel:+61433382365" className="flex items-center space-x-2 text-silver-secondary hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-cyan-primary" />
