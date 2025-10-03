@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FileText, Scale, AlertTriangle, CheckCircle, Shield, Users, Building2 } from 'lucide-react';
 import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function TermsPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -323,6 +324,8 @@ export default function TermsPage() {
           </div>
         </div>
       </main>
+      
+      <Footer />
     </BackgroundGradientAnimation>
   );
 }

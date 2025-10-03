@@ -4,6 +4,7 @@ import { InteractiveHoverButton } from '../components/ui/interactive-hover-butto
 import PilotSignupModal from '../components/PilotSignupModal';
 import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function ContactPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -179,6 +180,8 @@ export default function ContactPage() {
         onClose={() => setIsModalOpen(false)} 
         formspreeEndpoint="https://formspree.io/f/mgvnykge"
       />
+      
+      <Footer />
     </BackgroundGradientAnimation>
   );
 }

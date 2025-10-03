@@ -22,7 +22,7 @@ export default function Footer() {
             
             {/* Contact Info - Horizontal Layout */}
             <div className="flex flex-wrap gap-4 text-sm">
-              <a href="mailto:info@ai2groundworks.com.au" className="flex items-center space-x-2 text-silver-secondary hover:text-white transition-colors">
+              <a href="mailto:dale@ai2groundworks.com.au" className="flex items-center space-x-2 text-silver-secondary hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-cyan-primary" />
                 <span>dale@ai2groundworks.com.au</span>
               </a>

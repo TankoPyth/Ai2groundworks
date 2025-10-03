@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Linkedin, Mail } from 'lucide-react';
 import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 interface TeamMember {
   name: string;
@@ -155,6 +156,8 @@ export default function TeamPage() {
           </div>
         </div>
       </main>
+      
+      <Footer />
     </BackgroundGradientAnimation>
   );
 }

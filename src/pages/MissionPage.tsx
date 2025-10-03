@@ -3,8 +3,8 @@ import { Target } from 'lucide-react';
 import { InteractiveHoverButton } from '../components/ui/interactive-hover-button';
 import PilotSignupModal from '../components/PilotSignupModal';
 import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
-import BackgroundPaperShaders from '../components/ui/background-paper-shaders';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function MissionPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -164,6 +164,8 @@ export default function MissionPage() {
         onClose={() => setIsModalOpen(false)} 
         formspreeEndpoint="https://formspree.io/f/mgvnykge"
       />
+      
+      <Footer />
     </BackgroundGradientAnimation>
   );
 }

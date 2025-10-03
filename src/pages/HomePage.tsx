@@ -4,8 +4,6 @@ import HowItWorks from '../components/HowItWorks';
 import WhatItDoes from '../components/WhatItDoes';
 import VisualBreak from '../components/VisualBreak';
 import RoleFeatures from '../components/RoleFeatures';
-import SectionDivider from '../components/SectionDivider';
-import PilotProgram from '../components/PilotProgram';
 import Footer from '../components/Footer';
 import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 
