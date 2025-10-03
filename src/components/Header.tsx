@@ -133,32 +133,32 @@ export default function Header() {
       
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
+        <div className="absolute top-full left-0 right-0 z-40 md:hidden mt-2 px-4">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm -z-10"
             onClick={closeMobileMenu}
           />
           
-          {/* Compact Dropdown */}
-          <div className="absolute top-16 right-4 left-4 bg-dark-primary/98 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl transform transition-all duration-300 ease-out max-w-sm mx-auto">
+          {/* Compact Dropdown - Right below header */}
+          <div className="bg-dark-primary border border-white/20 rounded-xl shadow-xl max-w-xs ml-auto mr-4">
             
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-white/10">
-              <span className="text-lg font-semibold text-white">Navigation</span>
+            <div className="flex items-center justify-between p-3 border-b border-white/10">
+              <span className="text-base font-semibold text-white">Menu</span>
               <button
                 onClick={closeMobileMenu}
-                className="w-8 h-8 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation"
+                className="w-7 h-7 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation"
                 aria-label="Close navigation menu"
                 type="button"
               >
-                <X className="w-4 h-4 text-white" />
+                <X className="w-3 h-3 text-white" />
               </button>
             </div>
 
             {/* Navigation */}
-            <nav className="p-4">
-              <div className="space-y-1">
+            <nav className="p-3">
+              <div className="space-y-1.5">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.url;
@@ -171,12 +171,12 @@ export default function Header() {
                       className={cn(
                         "flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 touch-manipulation active:scale-95",
                         isActive
-                          ? "bg-cyan-primary/20 border border-cyan-primary/30 text-cyan-primary" 
-                          : "text-silver-secondary hover:text-white hover:bg-white/10"
+                          ? "bg-cyan-primary/30 text-cyan-primary font-medium" 
+                          : "text-white hover:bg-white/10"
                       )}
                     >
-                      <Icon className="w-5 h-5" />
-                      <span className="font-medium">{item.name}</span>
+                      <Icon className="w-4 h-4" />
+                      <span className="text-sm">{item.name}</span>
                     </Link>
                   );
                 })}
@@ -184,19 +184,19 @@ export default function Header() {
             </nav>
 
             {/* CTA Section */}
-            <div className="p-4 border-t border-white/10">
+            <div className="p-3 border-t border-white/10">
               <button
                 onClick={() => {
                   window.dispatchEvent(new CustomEvent('openPilotModal'));
                   closeMobileMenu();
                 }}
-                className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation"
+                className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-medium py-2.5 px-3 rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation text-sm"
                 type="button"
               >
-                Apply for pilot program
+                Apply for Pilot
               </button>
               
-              <div className="flex items-center justify-center space-x-2 text-silver-tertiary mt-2">
+              <div className="flex items-center justify-center space-x-2 text-silver-tertiary mt-2.5">
                 <div className="w-1.5 h-1.5 bg-cyan-primary rounded-full animate-pulse"></div>
                 <span className="text-xs">3-month pilot</span>
               </div>
