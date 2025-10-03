@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Target, Users, MessageSquare, Building2, Menu } from 'lucide-react';
+import { Home, Target, Users, MessageSquare, Building2, Menu, X } from 'lucide-react';
 import logoSpin from '../assets/images/logo_spin.gif';
 import { InteractiveHoverButton } from './ui/interactive-hover-button';
-import MobileSidebar from './ui/MobileSidebar';
 import { cn } from '../lib/utils';
 
 export default function Header() {
   const location = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Determine active tab based on current route
   const getActiveTab = () => {
@@ -35,17 +34,11 @@ export default function Header() {
     { name: 'Contact', url: '/contact', icon: MessageSquare }
   ];
 
-  // Debug mobile menu toggle
-  const handleMobileMenuToggle = () => {
-    console.log('Mobile menu toggle clicked, current state:', isMobileMenuOpen);
-    setIsMobileMenuOpen(prev => {
-      console.log('Setting mobile menu to:', !prev);
-      return !prev;
-    });
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleMobileMenuClose = () => {
-    console.log('Closing mobile menu');
+  const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
 
@@ -56,10 +49,9 @@ export default function Header() {
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button */}
             <button
-              onClick={handleMobileMenuToggle}
+              onClick={toggleMobileMenu}
               className="md:hidden w-10 h-10 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 touch-manipulation z-50"
-              aria-label="Open navigation menu"
-              aria-expanded={isMobileMenuOpen}
+              aria-label="Toggle navigation menu"
               type="button"
             >
               <Menu className="w-5 h-5 text-white" />
@@ -139,12 +131,82 @@ export default function Header() {
         </div>
       </nav>
       
-      {/* Mobile Sidebar */}
-      {console.log('Rendering MobileSidebar with isOpen:', isMobileMenuOpen)}
-      <MobileSidebar 
-        isOpen={isMobileMenuOpen} 
-        onClose={handleMobileMenuClose}
-      />
+      {/* Mobile Sidebar Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={closeMobileMenu}
+          />
+          
+          {/* Sidebar */}
+          <div className="absolute top-0 left-0 h-full w-80 max-w-[85vw] bg-dark-primary/95 backdrop-blur-xl border-r border-white/10 transform transition-transform duration-300 ease-out">
+            
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-white/10">
+              <div className="flex items-center space-x-3">
+                <Building2 className="w-6 h-6 text-cyan-primary" />
+                <span className="text-xl font-semibold text-white">Ai²Groundworks</span>
+              </div>
+              <button
+                onClick={closeMobileMenu}
+                className="w-10 h-10 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation"
+                aria-label="Close navigation menu"
+                type="button"
+              >
+                <X className="w-5 h-5 text-white" />
+              </button>
+            </div>
+
+            {/* Navigation */}
+            <nav className="p-6">
+              <div className="space-y-2">
+                {navItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.url;
+
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.url}
+                      onClick={closeMobileMenu}
+                      className={cn(
+                        "flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 touch-manipulation active:scale-95",
+                        isActive 
+                          ? "bg-cyan-primary/20 border border-cyan-primary/30 text-cyan-primary" 
+                          : "text-silver-secondary hover:text-white hover:bg-white/10"
+                      )}
+                    >
+                      <Icon className="w-5 h-5" />
+                      <span className="font-medium">{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </nav>
+
+            {/* CTA Section */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-white/10">
+              <button
+                onClick={() => {
+                  window.dispatchEvent(new CustomEvent('openPilotModal'));
+                  closeMobileMenu();
+                }}
+                className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation"
+                type="button"
+              >
+                Apply for pilot program
+              </button>
+              
+              <div className="flex items-center justify-center space-x-2 text-silver-tertiary mt-3">
+                <div className="w-1.5 h-1.5 bg-cyan-primary rounded-full animate-pulse"></div>
+                <span className="text-xs">3-month pilot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
