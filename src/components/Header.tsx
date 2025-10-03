@@ -42,6 +42,15 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  // Scroll to top when navigating via mobile menu
+  const handleNavigation = () => {
+    closeMobileMenu();
+    // Small delay to ensure navigation completes before scroll
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 100);
+  };
+
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-primary/80 backdrop-blur-xl border-b border-white/8">
@@ -163,7 +172,7 @@ export default function Header() {
                     <Link
                       key={item.name}
                       to={item.url}
-                      onClick={closeMobileMenu}
+                      onClick={handleNavigation}
                       className={cn(
                         "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 touch-manipulation active:scale-95 font-medium shadow-sm",
                         isActive
@@ -183,7 +192,7 @@ export default function Header() {
             <div className="p-4 border-t-2 border-gray-700 bg-gray-800 rounded-b-2xl">
               <button
                 onClick={() => {
-                  closeMobileMenu();
+                  handleNavigation();
                   window.dispatchEvent(new CustomEvent('openPilotModal'));
                 }}
                 className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-xl active:scale-95 touch-manipulation text-base shadow-lg border-2 border-cyan-400"
