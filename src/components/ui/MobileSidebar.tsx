@@ -10,6 +10,9 @@ interface MobileSidebarProps {
 
 export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   const location = useLocation();
+  
+  // Debug logging
+  console.log('MobileSidebar render - isOpen:', isOpen);
 
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
@@ -20,10 +23,13 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
 
   // Prevent body scroll when sidebar is open
   useEffect(() => {
+    console.log('MobileSidebar useEffect - isOpen changed to:', isOpen);
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      console.log('Body scroll disabled');
     } else {
       document.body.style.overflow = 'unset';
+      console.log('Body scroll enabled');
     }
     return () => {
       document.body.style.overflow = 'unset';
@@ -33,14 +39,16 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   // Close sidebar when route changes
   useEffect(() => {
     if (isOpen) {
+      console.log('Route changed, closing sidebar');
       onClose();
     }
-  }, [location.pathname, onClose]);
+  }, [location.pathname, onClose, isOpen]);
 
   // Handle escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
+        console.log('Escape key pressed, closing sidebar');
         onClose();
       }
     };
@@ -54,23 +62,26 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   // Handle backdrop click
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
+      console.log('Backdrop clicked, closing sidebar');
       onClose();
     }
   };
 
+  // Always render the component, but control visibility with CSS
   return (
-    <>
+    <div className="md:hidden">
       {/* Backdrop */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
-          onClick={handleBackdropClick}
-        />
-      )}
+      <div 
+        className={cn(
+          "fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-300",
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+        onClick={handleBackdropClick}
+      />
 
       {/* Sidebar */}
       <div className={cn(
-        "fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-dark-primary/95 backdrop-blur-xl border-r border-white/10 z-50 transform transition-transform duration-300 ease-out md:hidden",
+        "fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-dark-primary/95 backdrop-blur-xl border-r border-white/10 z-50 transform transition-transform duration-300 ease-out",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         
@@ -81,9 +92,13 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
             <span className="text-xl font-semibold text-white">Ai²Groundworks</span>
           </div>
           <button
-            onClick={onClose}
+            onClick={() => {
+              console.log('Close button clicked');
+              onClose();
+            }}
             className="w-10 h-10 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 touch-manipulation"
             aria-label="Close navigation menu"
+            type="button"
           >
             <X className="w-5 h-5 text-white" />
           </button>
@@ -100,7 +115,10 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
                 <Link
                   key={item.name}
                   to={item.url}
-                  onClick={onClose}
+                  onClick={() => {
+                    console.log('Nav link clicked:', item.name);
+                    onClose();
+                  }}
                   className={cn(
                     "flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 touch-manipulation active:scale-95",
                     isActive 
@@ -120,10 +138,12 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
         <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-white/10">
           <button
             onClick={() => {
+              console.log('CTA button clicked');
               window.dispatchEvent(new CustomEvent('openPilotModal'));
               onClose();
             }}
             className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation"
+            type="button"
           >
             Apply for pilot program
           </button>
@@ -134,6 +154,6 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -35,12 +35,17 @@ export default function Header() {
     { name: 'Contact', url: '/contact', icon: MessageSquare }
   ];
 
-  // Handle mobile menu toggle
+  // Debug mobile menu toggle
   const handleMobileMenuToggle = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    console.log('Mobile menu toggle clicked, current state:', isMobileMenuOpen);
+    setIsMobileMenuOpen(prev => {
+      console.log('Setting mobile menu to:', !prev);
+      return !prev;
+    });
   };
 
   const handleMobileMenuClose = () => {
+    console.log('Closing mobile menu');
     setIsMobileMenuOpen(false);
   };
 
@@ -52,9 +57,10 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={handleMobileMenuToggle}
-              className="md:hidden w-10 h-10 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 touch-manipulation"
+              className="md:hidden w-10 h-10 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 touch-manipulation z-50"
               aria-label="Open navigation menu"
               aria-expanded={isMobileMenuOpen}
+              type="button"
             >
               <Menu className="w-5 h-5 text-white" />
             </button>
@@ -70,9 +76,12 @@ export default function Header() {
                     console.log('Logo failed to load, falling back to icon');
                     const target = e.currentTarget;
                     target.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.innerHTML = '<div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-lg flex items-center justify-center"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>';
-                    target.parentNode?.appendChild(fallback);
+                    if (target.parentNode) {
+                      const fallback = document.createElement('div');
+                      fallback.className = 'w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-lg flex items-center justify-center';
+                      fallback.innerHTML = '<svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>';
+                      target.parentNode.appendChild(fallback);
+                    }
                   }}
                   onLoad={() => {
                     console.log('Logo loaded successfully');
@@ -131,6 +140,7 @@ export default function Header() {
       </nav>
       
       {/* Mobile Sidebar */}
+      {console.log('Rendering MobileSidebar with isOpen:', isMobileMenuOpen)}
       <MobileSidebar 
         isOpen={isMobileMenuOpen} 
         onClose={handleMobileMenuClose}
