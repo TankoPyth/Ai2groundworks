@@ -81,11 +81,11 @@ export default function Header() {
                 />
               </div>
               <span className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white tracking-tight">Ai²Groundworks</span>
-            </Link>
+               <div className="bg-stone-900 border-2 border-stone-700 rounded-xl shadow-2xl max-w-xs ml-auto mr-4">
             
             {/* Navigation and Contact grouped together */}
-            <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 flex-shrink-0">
-              {/* Tubelight Navigation - Hidden on mobile */}
+                 <div className="flex items-center justify-between p-3 border-b-2 border-stone-700">
+                   <span className="text-base font-bold text-white">Menu</span>
               <div className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 backdrop-blur-lg py-0.5 px-0.5 rounded-full shadow-lg">
                 {navItems.map((item) => {
                   const Icon = item.icon;
@@ -168,32 +168,32 @@ export default function Header() {
                       key={item.name}
                       to={item.url}
                       onClick={closeMobileMenu}
-                      className={cn(
-                        "flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 touch-manipulation active:scale-95",
+                               ? "bg-cyan-primary text-white shadow-lg" 
+                               : "text-white hover:bg-stone-700 hover:shadow-md"
                         isActive
                           ? "bg-cyan-primary/30 text-cyan-primary font-medium" 
                           : "text-white hover:bg-white/10"
                       )}
                     >
-                      <Icon className="w-4 h-4" />
+                     <X className="w-4 h-4 text-white font-bold" />
                       <span className="text-sm">{item.name}</span>
                     </Link>
                   );
                 })}
               </div>
-            </nav>
+                 <div className="p-3 border-t-2 border-stone-700">
 
             {/* CTA Section */}
             <div className="p-3 border-t border-white/10">
               <button
                 onClick={() => {
-                  window.dispatchEvent(new CustomEvent('openPilotModal'));
+                     className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-xl active:scale-95 touch-manipulation text-sm shadow-lg"
                   closeMobileMenu();
-                }}
+                             "flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-300 touch-manipulation active:scale-95 font-medium",
                 className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-medium py-2.5 px-3 rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation text-sm"
                 type="button"
               >
-                Apply for Pilot
+                   <div className="flex items-center justify-center space-x-2 text-stone-400 mt-2.5">
               </button>
               
               <div className="flex items-center justify-center space-x-2 text-silver-tertiary mt-2.5">
