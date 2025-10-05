@@ -41,7 +41,7 @@ export default function RoleFeatures() {
     },
     { 
       icon: TrendingUp, 
-      title: "For Executives", 
+      title: "Site Supervisors", 
       desc: "Strategic oversight with portfolio-wide analytics and performance insights.",
       features: ["Portfolio overview", "ROI analysis", "Strategic insights", "Performance metrics"],
       roleText: "Strategic oversight"
