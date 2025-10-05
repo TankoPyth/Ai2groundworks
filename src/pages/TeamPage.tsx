@@ -3,6 +3,7 @@ import { Linkedin, Mail } from 'lucide-react';
 import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import PilotSignupModal from '../components/PilotSignupModal';
 
 interface TeamMember {
   name: string;
@@ -15,6 +16,22 @@ interface TeamMember {
 
 export default function TeamPage() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Debug logging
+  useEffect(() => {
+    console.log('TeamPage modal state:', isModalOpen);
+  }, [isModalOpen]);
+
+  // Listen for global modal open events
+  useEffect(() => {
+    const handleOpenModal = () => {
+      console.log('TeamPage received modal event');
+      setIsModalOpen(true);
+    };
+    window.addEventListener('openPilotModal', handleOpenModal);
+    return () => window.removeEventListener('openPilotModal', handleOpenModal);
+  }, []);
 
   useEffect(() => {
     setIsVisible(true);
@@ -156,6 +173,13 @@ export default function TeamPage() {
           </div>
         </div>
       </main>
+      
+      {/* Pilot Program Modal */}
+      <PilotSignupModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        formspreeEndpoint="https://formspree.io/f/mgvnykge"
+      />
       
       <Footer />
     </BackgroundGradientAnimation>
