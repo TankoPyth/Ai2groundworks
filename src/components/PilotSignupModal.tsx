@@ -49,6 +49,11 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
   const [consent, setConsent] = React.useState(false);
   const [showSuccess, setShowSuccess] = React.useState(false);
 
+  // Debug logging
+  React.useEffect(() => {
+    console.log('Modal isOpen state:', isOpen);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -114,15 +119,21 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
 
   return (
     <>
-      <div className="fixed inset-0 z-[100]">
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute inset-0 flex items-center justify-center px-4 py-4 overflow-y-auto">
-        <div className="w-full max-w-2xl rounded-2xl bg-dark-primary/95 backdrop-blur-xl border border-white/20 p-4 sm:p-6 shadow-2xl my-4">
+      <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm" onClick={onClose}>
+        <div className="absolute inset-0 flex items-center justify-center px-4 py-4 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="w-full max-w-2xl rounded-2xl bg-stone-900 border-2 border-white/30 p-4 sm:p-6 shadow-2xl my-4 relative z-[10000]">
           <div className="flex items-center justify-between">
             <h3 className="text-lg sm:text-xl font-semibold text-white">
               {step === 1 ? "Pilot Program Signup — Company" : "Pilot Program Signup — Details"}
             </h3>
-            <button onClick={onClose} className="rounded-md p-2 text-silver-secondary hover:bg-white/10 hover:text-white active:bg-white/20 transition-colors touch-manipulation" aria-label="Close">
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                onClose();
+              }} 
+              className="rounded-md p-2 text-silver-secondary hover:bg-white/10 hover:text-white active:bg-white/20 transition-colors touch-manipulation" 
+              aria-label="Close"
+            >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -280,7 +291,7 @@ export default function PilotSignupModal({ isOpen, onClose, formspreeEndpoint }:
             </div>
           </form>
         </div>
-      </div>
+        </div>
       </div>
       
       {/* Success Notification */}

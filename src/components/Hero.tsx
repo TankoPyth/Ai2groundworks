@@ -7,9 +7,17 @@ import Header from './Header';
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
+  // Debug logging
+  React.useEffect(() => {
+    console.log('Hero modal state:', isModalOpen);
+  }, [isModalOpen]);
+
   // Listen for global modal open events
   React.useEffect(() => {
-    const handleOpenModal = () => setIsModalOpen(true);
+    const handleOpenModal = () => {
+      console.log('Global modal event received');
+      setIsModalOpen(true);
+    };
     window.addEventListener('openPilotModal', handleOpenModal);
     return () => window.removeEventListener('openPilotModal', handleOpenModal);
   }, []);

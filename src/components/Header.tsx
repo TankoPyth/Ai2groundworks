@@ -129,6 +129,7 @@ export default function Header() {
               variant="primary"
               className="px-2 sm:px-3 md:px-4 lg:px-5 py-1.5 text-xs sm:text-sm whitespace-nowrap"
               onClick={() => {
+                console.log('Header CTA clicked');
                 // Dispatch custom event to open modal from any page
                 window.dispatchEvent(new CustomEvent('openPilotModal'));
               }}
@@ -193,6 +194,7 @@ export default function Header() {
               <button
                 onClick={() => {
                   handleNavigation();
+                  console.log('Mobile CTA clicked');
                   window.dispatchEvent(new CustomEvent('openPilotModal'));
                 }}
                 className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-xl active:scale-95 touch-manipulation text-base shadow-lg border-2 border-cyan-400"

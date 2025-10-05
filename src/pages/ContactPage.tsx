@@ -10,9 +10,17 @@ export default function ContactPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Debug logging
+  useEffect(() => {
+    console.log('ContactPage modal state:', isModalOpen);
+  }, [isModalOpen]);
+
   // Listen for global modal open events
   useEffect(() => {
-    const handleOpenModal = () => setIsModalOpen(true);
+    const handleOpenModal = () => {
+      console.log('ContactPage received modal event');
+      setIsModalOpen(true);
+    };
     window.addEventListener('openPilotModal', handleOpenModal);
     return () => window.removeEventListener('openPilotModal', handleOpenModal);
   }, []);
