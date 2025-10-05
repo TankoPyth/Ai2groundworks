@@ -152,7 +152,7 @@ export default function Hero() {
             {/* Trust Indicator */}
             <div className="flex items-center justify-center space-x-2 text-xs text-silver-tertiary">
               <div className="w-1.5 h-1.5 bg-cyan-primary rounded-full animate-pulse"></div>
-              <span>3-month pilot • No cost • Limited spots</span>
+              <span>3-month pilot  • Limited spots</span>
             </div>
           </div>
         </div>
