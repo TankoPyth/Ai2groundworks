@@ -13,8 +13,8 @@ interface SuccessNotificationProps {
 export default function SuccessNotification({ 
   isVisible, 
   onClose, 
-  title = "Application Submitted!",
-  message = "Thank you for your interest in our pilot program. We've sent you a confirmation email and will be in touch soon.",
+  title = "Message Sent!",
+  message = "Thanks for reaching out. We'll be in touch soon.",
   autoCloseDelay = 5000 
 }: SuccessNotificationProps) {
   

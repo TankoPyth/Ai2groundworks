@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Home, Target, Users, MessageSquare, Building2, Menu, X } from 'lucide-react';
 import logoSpin from '../assets/images/logo_spin.gif';
 import { InteractiveHoverButton } from './ui/interactive-hover-button';
@@ -26,6 +26,7 @@ export default function Header() {
   };
   
   const activeTab = getActiveTab();
+  const navigate = useNavigate();
 
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
@@ -71,7 +72,7 @@ export default function Header() {
               <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
                 <img 
                   src={logoSpin}
-                  alt="Ai²Groundworks Logo" 
+                  alt="AI² GroundWorks Logo"
                   className="w-full h-full object-contain" 
                   onError={(e) => {
                     console.log('Logo failed to load, falling back to icon');
@@ -89,7 +90,7 @@ export default function Header() {
                   }}
                 />
               </div>
-              <span className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white tracking-tight">Ai²Groundworks</span>
+              <span className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white tracking-tight">AI² GroundWorks</span>
             </Link>
             
             {/* Navigation and Contact grouped together */}
@@ -124,15 +125,11 @@ export default function Header() {
             </div>
             
             {/* Contact Button */}
-            <InteractiveHoverButton 
-              text="Contact sales" 
+            <InteractiveHoverButton
+              text="Get in touch"
               variant="primary"
               className="px-2 sm:px-3 md:px-4 lg:px-5 py-1.5 text-xs sm:text-sm whitespace-nowrap"
-              onClick={() => {
-                console.log('Header CTA clicked');
-                // Dispatch custom event to open modal from any page
-                window.dispatchEvent(new CustomEvent('openPilotModal'));
-              }}
+              onClick={() => navigate('/contact')}
             />
           </div>
         </div>
@@ -194,19 +191,13 @@ export default function Header() {
               <button
                 onClick={() => {
                   handleNavigation();
-                  console.log('Mobile CTA clicked');
-                  window.dispatchEvent(new CustomEvent('openPilotModal'));
+                  navigate('/contact');
                 }}
                 className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-xl active:scale-95 touch-manipulation text-base shadow-lg border-2 border-cyan-400"
                 type="button"
               >
-                Contact sales
+                Get in touch
               </button>
-              
-              <div className="flex items-center justify-center space-x-2 text-gray-400 mt-3">
-                <div className="w-1.5 h-1.5 bg-cyan-primary rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium">3-month pilot</span>
-              </div>
             </div>
           </div>
         </div>

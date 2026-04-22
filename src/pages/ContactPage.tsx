@@ -1,75 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { Target, CheckCircle, ArrowRight, HelpCircle, FileText, Shield, BarChart3, Users, Clock } from 'lucide-react';
-import { InteractiveHoverButton } from '../components/ui/interactive-hover-button';
-import PilotSignupModal from '../components/PilotSignupModal';
+import { Mail, Phone, ArrowRight } from 'lucide-react';
 import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
+
 export default function ContactPage() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Debug logging
-  useEffect(() => {
-    console.log('ContactPage modal state:', isModalOpen);
-  }, [isModalOpen]);
-
-  // Listen for global modal open events
-  useEffect(() => {
-    const handleOpenModal = () => {
-      console.log('ContactPage received modal event');
-      setIsModalOpen(true);
-    };
-    window.addEventListener('openPilotModal', handleOpenModal);
-    return () => window.removeEventListener('openPilotModal', handleOpenModal);
-  }, []);
+  const [formState, setFormState] = useState({ name: '', email: '' });
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const benefits = [
-    "3-month access to full platform",
-    "Dedicated onboarding and support", 
-    "Direct input on product development",
-    "Priority access to new features",
-    "Custom integration assistance",
-    "Quarterly business reviews"
-  ];
-
-  const faqs = [
-    {
-      icon: FileText,
-      question: "What types of construction documents can AI² Site analyze?",
-      answer: "AI² Site can process and analyze all standard construction documents including project plans, specifications, safety reports, compliance documents, quotes, contracts, progress reports, and site photos. Our AI understands Australian construction standards and terminology."
-    },
-    {
-      icon: Shield,
-      question: "How does AI² Site help with safety compliance on construction sites?",
-      answer: "Our platform continuously monitors safety documentation, identifies potential hazards from uploaded reports and images, tracks compliance with Australian safety standards, and provides proactive alerts when safety protocols may be at risk."
-    },
-    {
-      icon: BarChart3,
-      question: "What kind of insights and analytics does the platform provide?",
-      answer: "AI² Site delivers predictive project analytics, budget variance tracking, timeline optimization recommendations, resource allocation insights, risk assessment reports, and performance benchmarking against industry standards."
-    },
-    {
-      icon: Users,
-      question: "How does the role-based system work for different team members?",
-      answer: "Each role (Project Manager, Safety Officer, Supervisor) gets a dedicated AI assistant with specialized knowledge and memory. PMs focus on scheduling and budgets, Safety Officers get compliance monitoring, and Supervisors receive site-specific guidance."
-    },
-    {
-      icon: Clock,
-      question: "How quickly can we get started with the pilot program?",
-      answer: "Once approved for our pilot program, we typically have your AI² Site workspace set up within 1-2 weeks. This includes document upload, team onboarding, and initial AI training on your project data."
-    },
-    {
-      icon: HelpCircle,
-      question: "What happens to our data and is it secure?",
-      answer: "Your project data remains completely private and secure. We use enterprise-grade encryption, Australian data centers, and strict access controls. Your data is never shared with other companies or used to train public AI models."
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitStatus('loading');
+    try {
+      const response = await fetch('https://formspree.io/f/mgvnykge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...formState, _subject: 'Waitlist signup — AI² GroundWorks' }),
+      });
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormState({ name: '', email: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch {
+      setSubmitStatus('error');
     }
-  ];
+  };
 
   return (
     <BackgroundGradientAnimation
@@ -89,106 +53,130 @@ export default function ContactPage() {
     >
       <Header />
 
-      {/* Contact Content */}
-      <main className="pt-24 pb-8 relative bg-transparent min-h-screen flex flex-col justify-center">
-        <div className="max-w-4xl mx-auto px-6">
-          
-          {/* Header section */}
-          <div className={`text-center mb-6 md:mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-white mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold" role="banner">
-              Be among the <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">first</span> in Australia
+      <main className="pt-24 pb-12 relative bg-transparent min-h-screen flex flex-col justify-center">
+        <div className="max-w-2xl mx-auto px-6 w-full">
+
+          {/* Heading */}
+          <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-white mb-5 leading-tight text-3xl sm:text-4xl lg:text-5xl font-bold">
+              Interested in what{' '}
+              <span className="bg-gradient-to-r from-cyan-primary via-cyan-quaternary to-cyan-tertiary bg-clip-text text-transparent">
+                we're building?
+              </span>
             </h1>
-            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed px-4 lg:px-0" role="doc-subtitle">
-              Join our exclusive pilot program and help shape the future of AI-powered construction oversight.
+            <p className="text-silver-secondary text-sm sm:text-base lg:text-lg font-light leading-relaxed">
+              We're currently running AI on live civil jobs and using AI² Site day to day on site as we refine it in real time.
+              <br className="hidden sm:block" />
+              <span className="mt-2 block">It's still early — but if you want to follow along or be one of the first to try it, reach out.</span>
             </p>
           </div>
 
-          {/* Benefits grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
-            {benefits.map((item, index) => (
-              <div key={index} 
-                   className={`transition-all duration-700 delay-${index * 100} ${isVisible ? 'opacity-100 translate-x-0' : `opacity-0 ${index % 2 === 0 ? '-translate-x-8' : 'translate-x-8'}`}`}>
-                <div className="flex items-center space-x-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-3 md:p-4 hover:bg-white/10 hover:border-cyan-primary/30 transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 text-cyan-primary flex-shrink-0" />
-                  <span className="text-white font-medium text-xs sm:text-sm lg:text-base">{item}</span>
-                </div>
-              </div>
-            ))}
+          {/* Quick contact CTA */}
+          <div className={`flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <a
+              href="mailto:dale@ai2groundworks.com.au"
+              className="flex items-center space-x-2 bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold px-6 py-3 rounded-xl hover:opacity-90 active:scale-95 transition-all duration-300 w-full sm:w-auto justify-center"
+            >
+              <Mail className="w-4 h-4" />
+              <span>Get in touch</span>
+            </a>
+            <a
+              href="#waitlist"
+              className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-primary/40 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 w-full sm:w-auto justify-center"
+            >
+              <ArrowRight className="w-4 h-4" />
+              <span>Join the waitlist</span>
+            </a>
           </div>
 
-          {/* CTA section */}
-          <div className={`text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-6 md:p-8">
-              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-3">Ready to transform your projects?</h2>
-              <p className="text-silver-secondary mb-4 font-light text-xs sm:text-sm lg:text-base px-2 lg:px-0">
-                Applications are reviewed on a rolling basis. Apply today to secure your spot.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <InteractiveHoverButton 
-                  text="Apply for pilot program" 
-                  variant="primary"
-                  className="px-4 sm:px-6 py-3 w-full sm:w-auto text-sm sm:text-base"
-                  onClick={() => setIsModalOpen(true)}
-                />
-                <div className="flex items-center space-x-2 text-silver-tertiary">
-                  <div className="w-2 h-2 bg-cyan-primary rounded-full animate-pulse"></div>
-                  <span className="text-xs sm:text-sm">Limited spots available</span>
+          {/* Waitlist form */}
+          <div
+            id="waitlist"
+            className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <h2 className="text-white font-bold text-xl mb-2">Join the waitlist</h2>
+            <p className="text-silver-secondary text-sm mb-6">Be one of the first to get access when we open up.</p>
+
+            {submitStatus === 'success' ? (
+              <div className="text-center py-6">
+                <div className="w-12 h-12 bg-cyan-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mail className="w-6 h-6 text-cyan-primary" />
                 </div>
+                <p className="text-white font-semibold text-lg mb-1">You're on the list!</p>
+                <p className="text-silver-secondary text-sm">We'll be in touch. Thanks for your interest in AI² Site.</p>
               </div>
-            </div>
-            
-            {/* FAQ Section */}
-            <div className="mt-8 md:mt-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 md:p-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 text-center" id="frequently-asked-questions">
-                Frequently Asked <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">Questions</span>
-              </h2>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {faqs.map((faq, index) => (
-                  <div key={index} 
-                       className={`transition-all duration-700 delay-${index * 100} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6 hover:bg-white/10 hover:border-cyan-primary/30 transition-all duration-300 h-full">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-10 h-10 bg-gradient-to-br from-cyan-primary to-cyan-tertiary rounded-xl flex items-center justify-center flex-shrink-0">
-                          <faq.icon className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-white font-semibold text-sm md:text-base mb-3 leading-tight">{faq.question}</h3>
-                          <p className="text-silver-secondary text-xs md:text-sm leading-relaxed">{faq.answer}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Contact Information */}
-            <div className="mt-4 md:mt-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6">
-              <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 text-center" id="contact-information">Get in touch</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-center">
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <h4 className="text-white font-semibold mb-2 text-sm md:text-base">Email</h4>
-                  <p className="text-silver-secondary text-xs sm:text-sm">info@ai2groundworks.com</p>
+                  <label htmlFor="name" className="block text-silver-secondary text-sm mb-1.5">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    value={formState.name}
+                    onChange={(e) => setFormState((s) => ({ ...s, name: e.target.value }))}
+                    placeholder="Your name"
+                    className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-silver-tertiary text-sm focus:outline-none focus:border-cyan-primary/60 transition-colors"
+                  />
                 </div>
                 <div>
-                  <h4 className="text-white font-semibold mb-2 text-sm md:text-base">Phone</h4>
-                  <p className="text-silver-secondary text-xs sm:text-sm">+61 433 382 365</p>
+                  <label htmlFor="email" className="block text-silver-secondary text-sm mb-1.5">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formState.email}
+                    onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
+                    placeholder="you@company.com"
+                    className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-silver-tertiary text-sm focus:outline-none focus:border-cyan-primary/60 transition-colors"
+                  />
                 </div>
-              </div>
+
+                {submitStatus === 'error' && (
+                  <p className="text-red-400 text-sm">Something went wrong — please try again or email us directly.</p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={submitStatus === 'loading'}
+                  className="w-full bg-gradient-to-r from-cyan-primary to-cyan-tertiary text-white font-semibold py-3 rounded-xl hover:opacity-90 active:scale-95 transition-all duration-300 disabled:opacity-60"
+                >
+                  {submitStatus === 'loading' ? 'Submitting…' : 'Join the waitlist'}
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Contact info */}
+          <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className="text-white font-semibold mb-4 text-base">Or reach out directly</h3>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="mailto:dale@ai2groundworks.com.au"
+                className="flex items-center space-x-3 text-silver-secondary hover:text-white transition-colors group"
+              >
+                <div className="w-8 h-8 bg-white/10 group-hover:bg-cyan-primary/20 rounded-lg flex items-center justify-center transition-colors">
+                  <Mail className="w-4 h-4 text-cyan-primary" />
+                </div>
+                <span className="text-sm">dale@ai2groundworks.com.au</span>
+              </a>
+              <a
+                href="tel:+61433382365"
+                className="flex items-center space-x-3 text-silver-secondary hover:text-white transition-colors group"
+              >
+                <div className="w-8 h-8 bg-white/10 group-hover:bg-cyan-primary/20 rounded-lg flex items-center justify-center transition-colors">
+                  <Phone className="w-4 h-4 text-cyan-primary" />
+                </div>
+                <span className="text-sm">+61 433 382 365</span>
+              </a>
             </div>
           </div>
+
         </div>
       </main>
-      
-      {/* Pilot Program Modal */}
-      <PilotSignupModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        formspreeEndpoint="https://formspree.io/f/mgvnykge"
-      />
-      
+
       <Footer />
     </BackgroundGradientAnimation>
   );

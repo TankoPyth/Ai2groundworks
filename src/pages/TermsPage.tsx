@@ -41,7 +41,7 @@ export default function TermsPage() {
               Terms of <span className="underline decoration-cyan-primary decoration-4 underline-offset-8">Use</span>
             </h1>
             <p className="text-silver-secondary text-lg font-light">
-              Terms and conditions for using Ai²Groundworks services
+              Terms and conditions for using AI² GroundWorks services
             </p>
             <p className="text-silver-tertiary text-sm mt-2">
               Last updated: January 2025
@@ -62,7 +62,7 @@ export default function TermsPage() {
                   </div>
                   <div className="space-y-4 text-silver-secondary">
                     <p>
-                      Welcome to Ai²Groundworks. These Terms of Use ("Terms") govern your access to and use of our 
+                      Welcome to AI² GroundWorks. These Terms of Use ("Terms") govern your access to and use of our 
                       artificial intelligence-powered construction oversight platform and related services (collectively, the "Service").
                     </p>
                     <p>
@@ -80,7 +80,7 @@ export default function TermsPage() {
                   </div>
                   <div className="space-y-4 text-silver-secondary">
                     <p>
-                      Ai²Groundworks provides an AI-powered platform designed to enhance construction project oversight through:
+                      AI² GroundWorks provides an AI-powered platform designed to enhance construction project oversight through:
                     </p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
                       <li>Document intelligence and analysis</li>
@@ -153,37 +153,12 @@ export default function TermsPage() {
                   </div>
                 </section>
 
-                {/* Pilot Program Terms */}
-                <section>
-                  <div className="flex items-center space-x-3 mb-4">
-                    <FileText className="w-6 h-6 text-cyan-primary" />
-                    <h2 className="text-2xl font-bold text-white">Pilot Program Terms</h2>
-                  </div>
-                  <div className="space-y-4 text-silver-secondary">
-                    <p>Our pilot program provides qualified participants with:</p>
-                    <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li>3-month complimentary access to the Ai²Groundworks platform</li>
-                      <li>Dedicated onboarding and technical support</li>
-                      <li>Direct input on product development and feature requests</li>
-                      <li>Priority access to new features and updates</li>
-                    </ul>
-                    <p>Pilot program conditions:</p>
-                    <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li>Participation is subject to application approval</li>
-                      <li>Access may be terminated at any time with reasonable notice</li>
-                      <li>Participants agree to provide feedback and usage data</li>
-                      <li>Case study participation may be requested (with your consent)</li>
-                      <li>No service level agreements apply during the pilot period</li>
-                    </ul>
-                  </div>
-                </section>
-
                 {/* Intellectual Property */}
                 <section>
                   <h2 className="text-2xl font-bold text-white mb-4">Intellectual Property</h2>
                   <div className="space-y-4 text-silver-secondary">
                     <p>
-                      The Ai²Groundworks platform, including our AI models, algorithms, software, and documentation, 
+                      The AI² GroundWorks platform, including our AI models, algorithms, software, and documentation, 
                       is protected by intellectual property laws and remains our exclusive property.
                     </p>
                     <p>You receive a limited, non-exclusive license to:</p>
@@ -208,7 +183,7 @@ export default function TermsPage() {
                   </div>
                   <div className="space-y-4 text-silver-secondary">
                     <p>
-                      <strong className="text-white">Critical Notice:</strong> Ai²Groundworks provides AI-powered insights 
+                      <strong className="text-white">Critical Notice:</strong> AI² GroundWorks provides AI-powered insights 
                       and recommendations as decision-support tools only.
                     </p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
@@ -298,7 +273,7 @@ export default function TermsPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <p><strong className="text-white">Email:</strong> legal@ai2groundworks.com.au</p>
-                          <p><strong className="text-white">General Inquiries:</strong> info@ai2groundworks.com.au</p>
+                          <p><strong className="text-white">General Inquiries:</strong> dale@ai2groundworks.com.au</p>
                         </div>
                         <div>
                           <p><strong className="text-white">Phone:</strong> +61 433 382 365</p>
@@ -314,7 +289,7 @@ export default function TermsPage() {
                   <div className="bg-cyan-primary/10 border border-cyan-primary/20 rounded-xl p-6">
                     <h3 className="text-xl font-bold text-white mb-3">Acknowledgment</h3>
                     <p className="text-silver-secondary">
-                      By using Ai²Groundworks, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use. 
+                      By using AI² GroundWorks, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use. 
                       You also acknowledge that you have read and understood our Privacy Policy.
                     </p>
                   </div>

@@ -62,7 +62,7 @@ export default function PrivacyPage() {
                   </div>
                   <div className="space-y-4 text-silver-secondary">
                     <p>
-                      At Ai²Groundworks, we are committed to protecting your privacy and ensuring the security of your personal information. 
+                      At AI² GroundWorks, we are committed to protecting your privacy and ensuring the security of your personal information. 
                       This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our 
                       AI-powered construction oversight platform and related services.
                     </p>
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
                     <ul className="list-disc list-inside space-y-2 ml-4">
                       <li>Create and manage your user account</li>
                       <li>Authenticate your identity and authorize access</li>
-                      <li>Process pilot program applications</li>
+                      <li>Process service enquiries and account setup</li>
                       <li>Provide customer support and technical assistance</li>
                     </ul>
 
@@ -402,7 +402,7 @@ export default function PrivacyPage() {
                             Email
                           </h4>
                           <p><strong className="text-white">Privacy Officer:</strong> privacy@ai2groundworks.com.au</p>
-                          <p><strong className="text-white">General Inquiries:</strong> info@ai2groundworks.com.au</p>
+                          <p><strong className="text-white">General Inquiries:</strong> dale@ai2groundworks.com.au</p>
                         </div>
                         <div>
                           <h4 className="text-white font-semibold mb-3 flex items-center">
@@ -433,7 +433,7 @@ export default function PrivacyPage() {
                   <div className="bg-cyan-primary/10 border border-cyan-primary/20 rounded-xl p-6">
                     <h3 className="text-xl font-bold text-white mb-3">Acknowledgment</h3>
                     <p className="text-silver-secondary">
-                      By using Ai²Groundworks, you acknowledge that you have read, understood, and agree to the collection, 
+                      By using AI² GroundWorks, you acknowledge that you have read, understood, and agree to the collection, 
                       use, and disclosure of your information as described in this Privacy Policy. You also acknowledge your 
                       rights regarding your personal information and how to exercise them.
                     </p>

@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-3">
               <Building2 className="w-5 h-5 text-cyan-primary" />
-              <span className="text-lg font-semibold text-white">Ai²Groundworks</span>
+              <span className="text-lg font-semibold text-white">AI² GroundWorks</span>
             </div>
             <p className="text-silver-secondary text-sm mb-3 max-w-sm">
               AI-powered oversight for safer, smarter construction projects across Australia.
@@ -64,7 +64,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0">
           <p className="text-silver-tertiary text-xs">
-            © 2025 Ai²Groundworks. All rights reserved.
+            © 2025 AI² GroundWorks. All rights reserved.
           </p>
           <div className="flex items-center space-x-4 text-xs">
             <Link to="/terms" className="text-silver-tertiary hover:text-white transition-colors">Terms</Link>
