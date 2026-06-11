@@ -3,6 +3,9 @@ import { Linkedin, Mail } from 'lucide-react';
 import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import dalePhoto from '../assets/images/Dale-profile.jpeg';
+import markPhoto from '../assets/images/Mark-headshot.png';
+import jarrodPhoto from '../assets/images/Jarrod-headshot.png';
 
 interface TeamMember {
   name: string;
@@ -27,7 +30,7 @@ export default function TeamPage() {
       title: "Founder & CEO",
       email: "dale@ai2groundworks.com.au",
       linkedinUrl: "https://www.linkedin.com/in/dale-gaffey/",
-      photoUrl: "https://media.licdn.com/dms/image/v2/D4E03AQEbda0AKs335g/profile-displayphoto-shrink_800_800/B4EZSAtQjyHAAc-/0/1737326136698?e=1759968000&v=beta&t=GcBYWZgvE7RQlrkvPG1R_TjrawSQprQT-Yb_doP_Pb4",
+      photoUrl: dalePhoto,
       bio: "18+ years in civil construction technology and project management"
     },
     {
@@ -35,7 +38,7 @@ export default function TeamPage() {
       title: "Co-Founder- Resources and Relationships",
       email: "mark@ai2groundworks.com.au",
       linkedinUrl: "https://www.linkedin.com/in/mark-mullan-6845a2199/",
-      photoUrl: "https://media.licdn.com/dms/image/v2/D5603AQHWrtSnrljzgg/profile-displayphoto-crop_800_800/B56Zfkn7yLH8AI-/0/1751887364478?e=1759968000&v=beta&t=b2RxGI__vKcoHgC8mKhaFIocyJl7r_Tl0ypBfTzWDx8",
+      photoUrl: markPhoto,
       bio: "AI/ML expert with deep experience in construction safety systems"
     },
     {
@@ -43,7 +46,7 @@ export default function TeamPage() {
       title: "Co-Founder",
       email: "jarrod@ai2groundworks.com.au",
       linkedinUrl: "https://www.linkedin.com/in/jarrod-tanko-104943267/",
-      photoUrl: "https://media.licdn.com/dms/image/v2/D5603AQHz_ZTZIVJKpg/profile-displayphoto-shrink_800_800/B56ZV2m4g5HsAc-/0/1741451660772?e=1759968000&v=beta&t=IBMvVSsZftKTgJio7OMSxHd9bM1jjrPHa6wnfG9zRto",
+      photoUrl: jarrodPhoto,
       bio: "Product strategy leader focused on user-centered construction solutions"
     }
   ];
