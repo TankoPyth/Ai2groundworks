@@ -63,7 +63,7 @@ export default function Hero() {
               </h1>
 
               <p className="text-silver-secondary mb-4 sm:mb-6 font-light text-sm sm:text-base lg:text-lg xl:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 px-2 sm:px-0" role="contentinfo">
-                Built from the ground up for civil construction — running on <span className="text-white font-semibold">live jobs</span> across Australia right now.
+                Built from the ground up for civil construction, running on <span className="text-white font-semibold">live jobs</span> across Australia right now.
               </p>
             </div>
 

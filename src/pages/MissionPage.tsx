@@ -60,7 +60,7 @@ export default function MissionPage() {
                   <p className="text-silver-secondary">
                     We believe in{' '}
                     <span className="text-cyan-primary font-semibold">working hard, lifting others up</span>
-                    , and pushing projects toward what's possible — one job at a time.
+                    , and pushing projects toward what's possible, one job at a time.
                   </p>
 
                   <p className="text-silver-secondary">
